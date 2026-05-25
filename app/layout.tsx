@@ -17,6 +17,12 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Shiraz Ali | Full Stack Agentic AI Developer",
   description: "Personal portfolio of Shiraz Ali, specialized in Agentic AI and Full Stack Development.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-96x96.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

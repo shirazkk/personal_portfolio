@@ -25,13 +25,6 @@ const Hero = () => {
       ease: 'power4.out',
     });
 
-    tl.from('.hero-cta', {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.5,
-      ease: 'back.out(1.7)',
-    }, '-=0.5');
-
     // Parallax effect for 3D canvas
     gsap.to('.hero-canvas-wrapper', {
       scrollTrigger: {
@@ -57,20 +50,13 @@ const Hero = () => {
         </h2>
         
         <h1 ref={headlineRef} className="hero-reveal text-[15vw] md:text-[12vw] font-bebas leading-[0.8] mb-8 uppercase whitespace-nowrap w-full">
-          SHIRAZ Ali
+          {portfolioData.personal.name}
         </h1>
         
         <div className="max-w-2xl px-4">
           <p className="hero-reveal text-lg md:text-xl mx-auto mb-10 text-white/70">
-            {portfolioData.personal.title}
+            {portfolioData.personal.location}
           </p>
-          
-          <button 
-            onClick={() => lenis?.scrollTo('#projects')}
-            className="hero-cta px-10 py-4 bg-[#FF6B00] text-white font-bebas text-2xl hover:bg-white hover:text-[#0a0a0a] transition-all duration-300 transform"
-          >
-            See My Work
-          </button>
         </div>
       </div>
       

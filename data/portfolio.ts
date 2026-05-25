@@ -1,162 +1,427 @@
 export const portfolioData = {
   meta: {
     title: "Shiraz Ali | Web Developer • Agentic AI Developer",
-    description: "Portfolio website showcasing web development and Agentic AI work and skills in Next.js, React, TypeScript, sanity(CMS), modern web technologies, openai-agent-sdk, crewai, langchain and LLM applications"
+    description:
+      "Portfolio website showcasing web development and Agentic AI work and skills in Next.js, React, TypeScript, sanity(CMS), modern web technologies, openai-agent-sdk, crewai, langchain and LLM applications",
   },
   personal: {
     name: "Shiraz Ali",
     title: "Web Developer • Agentic AI Developer",
     location: "Karachi, Sindh, Pakistan",
-    avatar: "/profile.jpg",
+    avatar: "/profile.png",
     email: "shirazkk8@gmail.com",
     phone: "+92 327 3599802",
     availableForWork: true,
-    badges: ["Next.js", "sanity(CMS)", "TypeScript", "Openai-agent-sdk", "Crewai"],
+    badges: [
+      "Next.js",
+      "sanity(CMS)",
+      "TypeScript",
+      "Openai-agent-sdk",
+      "Crewai",
+    ],
     social: [
-      { platform: "GitHub", url: "https://github.com/shirazkk", icon: "Github" },
-      { platform: "LinkedIn", url: "https://www.linkedin.com/in/shirazali8", icon: "Linkedin" },
+      {
+        platform: "GitHub",
+        url: "https://github.com/shirazkk",
+        icon: "Github",
+      },
+      {
+        platform: "LinkedIn",
+        url: "https://www.linkedin.com/in/shirazali8",
+        icon: "Linkedin",
+      },
       { platform: "Twitter", url: "https://x.com/KkShiraz", icon: "Twitter" },
-      { platform: "Instagram", url: "#", icon: "Instagram" }
-    ]
+      { platform: "Instagram", url: "#", icon: "Instagram" },
+    ],
   },
   about: {
-    bio: "As a passionate frontend developer, I specialize in building dynamic and user-friendly web applications using Next.js, React, sanity(CMS) and Tailwind CSS. With proficiency in TypeScript, JavaScript, and Python, I have a strong foundation in both frontend development and backend programming. Currently, I am expanding my expertise by exploring Agentic AI and its potential in shaping future technologies.",
+    bio: "I am a Full Stack Web Developer and Agentic AI Developer based in Karachi, Pakistan. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS, and I design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. From crafting pixel-perfect interfaces to architecting multi-agent AI pipelines, I work across the full spectrum of modern product development. As the founder of CodePulse Innovations, I turned that vision into reality by building FolioGenerator.com — an AI-driven platform that generates professional portfolio websites from resumes instantly.",
     focus: [
-      "Building responsive, high-performance web applications with Next.js and React",
-      "Implementing modern UI/UX designs with Tailwind CSS and TypeScript",
-      "Exploring Agentic AI and its integration with web technologies",
-      "Creating scalable e-commerce solutions with CMS integration"
+      "Building full stack web applications with Next.js, React, TypeScript and Sanity CMS",
+      "Designing and deploying Agentic AI systems using OpenAI Agent SDK, CrewAI and LangChain",
+      "Developing AI-powered products from idea to launch with real-world impact",
+      "Creating scalable backend APIs with FastAPI, PostgreSQL and RAG pipelines",
+      "Integrating AI into web platforms for smarter, autonomous user experiences",
     ],
     languages: [
       { name: "English", proficiency: "Intermediate", level: 70, flag: "🇺🇸" },
-      { name: "Urdu", proficiency: "Native", level: 100, flag: "🇵🇰" }
+      { name: "Urdu", proficiency: "Native", level: 100, flag: "🇵🇰" },
     ],
     interests: [
       "Agentic AI",
       "LLM applications",
+      "AI-Powered Products",
       "E-commerce Development",
       "UI/UX Design",
-      "AI-Powered Web Development"
-    ]
+      "Prompt Engineering",
+    ],
   },
   navigation: [
     { label: "Home", href: "/" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
-    { label: "Credentials", href: "#credentials" }
+    { label: "Credentials", href: "#credentials" },
   ],
   experience: [
+    {
+      title: "Founder",
+      company: "CodePulse Innovations · Self-employed",
+      period: "Jun 2025 - Present",
+      location: "Karachi Division, Sindh, Pakistan",
+      description:
+        "Founded and developed FolioGenerator.com, an AI-driven platform that enables users to instantly create professional portfolio websites from their resumes.",
+      achievements: [
+        "Built and launched FolioGenerator.com end-to-end using modern web technologies with fast performance and scalability",
+        "Implemented responsive and intuitive UI/UX for seamless access across all devices",
+        "Integrated cloud hosting and scalable backend solutions to deliver a smooth global user experience",
+        "Designed and deployed Agentic AI pipelines to automate portfolio generation from resume input",
+        "Led product vision, branding, and growth strategy from idea to launch",
+      ],
+      technologies: [
+        "Next.js",
+        "FastAPI",
+        "Agentic AI",
+        "Prompt Engineering",
+        "CSS",
+        "Front-End Engineering",
+      ],
+    },
     {
       title: "Frontend Development Intern",
       company: "DevelopersHub Corporation©",
       period: "March 2025 - July 2025",
-      description: "Completed a comprehensive 6-week internship focusing on frontend development in a remote setting. Worked on multiple projects including e-commerce platforms and networking applications, gaining hands-on experience with modern web technologies.",
+      location: "Remote",
+      description:
+        "Completed a comprehensive 6-week internship focusing on frontend development in a remote setting. Worked on multiple projects including e-commerce platforms and networking applications, gaining hands-on experience with modern web technologies.",
       achievements: [
         "Developed a responsive e-commerce website with pixel-perfect accuracy from Figma designs",
         "Created user-friendly interfaces for a networking platform with dashboard and chatbot integration",
         "Enhanced user engagement through optimized UI/UX implementations",
-        "Successfully delivered projects using Next.js, Tailwind CSS, Typescript, and Shadcn"
+        "Successfully delivered projects using Next.js, Tailwind CSS, Typescript, and Shadcn",
       ],
-      technologies: ["Next.js", "Tailwind CSS", "Typescript", "React", "Figma", "UI/UX Design"]
-    }
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "Typescript",
+        "React",
+        "Figma",
+        "UI/UX Design",
+      ],
+    },
   ],
   projects: [
     {
       title: "Ziybex",
-      description: "Cutting-edge creative marketing agency platform specializing in web design, branding, and SEO solutions.",
-      techStack: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion", "Radix UI", "TypeScript"],
+      description:
+        "Cutting-edge creative marketing agency platform specializing in web design, branding, and SEO solutions.",
+      techStack: [
+        "Next.js",
+        "Sanity CMS",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Radix UI",
+        "TypeScript",
+      ],
       category: "Web App",
+      bannerImage: "/ziybex.png",
       githubUrl: "https://github.com/shirazkk/Ziybex",
       liveUrl: "https://ziybex.com",
-      featured: true
+      featured: true,
     },
     {
       title: "Jarvis Guardian AI",
-      description: "Always-on AI guardian assistant for Windows using voice and face recognition, and continuous system monitoring.",
-      techStack: ["Python", "Resemblyzer", "Google Speech-to-Text", "ElevenLabs", "Twilio", "Pillow"],
+      description:
+        "Always-on AI guardian assistant for Windows using voice and face recognition, and continuous system monitoring.",
+      techStack: [
+        "Python",
+        "Resemblyzer",
+        "Google Speech-to-Text",
+        "ElevenLabs",
+        "Twilio",
+        "computer-tools",
+      ],
       category: "AI/Agentic",
+      bannerImage: "/jarvis.png",
       githubUrl: "https://github.com/shirazkk/Jarvis-Guardian-AI",
       liveUrl: null,
-      featured: true
+      featured: true,
     },
     {
       title: "Personal AI Employee",
-      description: "A local-first, file-based AI assistant powered by Claude Code CLI, Obsidian, and Gmail polling.",
-      techStack: ["Python", "Claude Code CLI", "Gmail API", "Watchdog"],
+      description:
+        "A local-first, file-based AI assistant powered by Claude Code CLI, Obsidian, and Gmail polling.",
+      techStack: [
+        "Python",
+        "Claude Code CLI",
+        "Mcp Servers",
+        "Watchdog",
+        "obsidian-vault",
+      ],
       category: "AI/Agentic",
+      bannerImage: "/personal_ai__employee.png",
       githubUrl: "https://github.com/shirazkk/Personal-AI-Employee",
       liveUrl: null,
-      featured: false
+      featured: false,
     },
     {
       title: "Ustad.ai",
-      description: "Culturally-rooted, multi-agent AI tutoring platform for Pakistani students in Hinglish with board-specific syllabi.",
-      techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Google Gemini"],
+      description:
+        "Culturally-rooted, multi-agent AI tutoring platform for Pakistani students in Hinglish with board-specific syllabus.",
+      techStack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Google Gemini",
+        "vercel ai sdk",
+        "cloud run",
+      ],
       category: "AI/Agentic",
+      bannerImage: "/ustad_ai.png",
       githubUrl: "https://github.com/shirazkk/Ustad.ai",
-      liveUrl: null,
-      featured: true
+      liveUrl: "https://ustad-ai-service-373424250185.us-central1.run.app/",
+      featured: true,
     },
     {
       title: "DarkVault",
-      description: "Secure, anonymous, and PWA-ready file-sharing application with a minimalist hacker-themed interface.",
+      description:
+        "Secure, anonymous, and PWA-ready file-sharing application with a minimalist hacker-themed interface.",
       techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
       category: "Web App",
+      bannerImage: "/dark_vault.png",
       githubUrl: "https://github.com/shirazkk/Temporary-File-Sharing-Vault",
       liveUrl: "https://temporary-file-sharing-vault.vercel.app",
-      featured: false
+      featured: false,
     },
     {
-      title: "AI Todo Hackathon",
-      description: "Production-ready todo application with AI-powered features, built with spec-driven development.",
-      techStack: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Qdrant", "Google Generative AI"],
+      title: "Physical AI Book — Hackathon",
+      description:
+        "AI-powered book built with Docusaurus, Qdrant vector search, and Google Gen-Ai. Developed using Spec-Driven Development.",
+      techStack: [
+        "Docusaurus",
+        "FastAPI",
+        "Qdrant",
+        "Google Generative AI",
+        "RAG",
+        "Claude Code",
+        "Python",
+        "Spec-Driven Development",
+      ],
       category: "Full Stack",
+      bannerImage: "/physicial_ai_book.png",
       githubUrl: "https://github.com/shirazkk/Physicial_Ai_Book_Hackathon_1",
-      liveUrl: null,
-      featured: false
-    }
+      liveUrl: "https://shirazkk.github.io/Physicial_Ai_Book_Hackathon_1",
+      featured: true,
+    },
   ],
   credentials: {
     certifications: [
-      { name: "Fundamental AI Concepts", issuer: "UniAthena", date: "2025", logo: "/uniathena.jpeg" },
-      { name: "React.js Certification", issuer: "HackerRank", date: "2024", logo: "/hackerrank.jpeg" },
-      { name: "Introduction to TypeScript", issuer: "Great Learning", date: "2024", logo: "/great_learning.jpeg" },
-      { name: "Fundamental Ai Concept", issuer: "Great Learning", date: "2024", logo: "/microsoft.jpeg" },
-      { name: "AI Python", issuer: "DeepLearning.AI", date: "2024", logo: "/deeplearningai.jpeg" }
+      // ── 2026 ──────────────────────────────────────
+      {
+        name: "Prompt Design in Vertex AI Skill Badge",
+        issuer: "Google",
+        date: "2026",
+        logo: "/google.png",
+      },
+      {
+        name: "Build a Website on Google Cloud Skill Badge",
+        issuer: "Google",
+        date: "2026",
+        logo: "/google.png",
+      },
+      {
+        name: "Claude Code in Action",
+        issuer: "Anthropic",
+        date: "2026",
+        logo: "/anthropic.png",
+      },
+      {
+        name: "OpenClaw Mastery for Everyone",
+        issuer: "LevelUp Labs",
+        date: "2026",
+        logo: "/leveluplabs.png",
+      },
+      {
+        name: "Claude Code 101",
+        issuer: "Anthropic",
+        date: "2026",
+        logo: "/anthropic.png",
+      },
+      {
+        name: "Agentic AI Professional Level 2 Developer",
+        issuer: "PIAIC",
+        date: "2026",
+        logo: "/piaic.jpeg",
+      },
+      {
+        name: "Agentic AI Level 1 Developer",
+        issuer: "PIAIC",
+        date: "2026",
+        logo: "/piaic.jpeg",
+      },
+
+      // ── 2025 ──────────────────────────────────────
+      {
+        name: "Docker Fundamentals | Crash Course",
+        issuer: "Udemy",
+        date: "2025",
+        logo: "/udemy.png",
+      },
+      {
+        name: "Introduction to Model Context Protocol",
+        issuer: "Anthropic",
+        date: "2025",
+        logo: "/anthropic.png",
+      },
+      {
+        name: "Fundamental AI Concepts",
+        issuer: "UniAthena",
+        date: "2025",
+        logo: "/uniathena.jpeg",
+      },
+      {
+        name: "Basic of Python",
+        issuer: "UniAthena",
+        date: "2025",
+        logo: "/uniathena.jpeg",
+      },
+
+      // ── 2024 ──────────────────────────────────────
+      {
+        name: "React Js",
+        issuer: "HackerRank",
+        date: "2024",
+        logo: "/hackerrank.jpeg",
+      },
+      {
+        name: "Introduction To TypeScript",
+        issuer: "Great Learning",
+        date: "2024",
+        logo: "/great_learning.jpeg",
+      },
+      {
+        name: "Fundamental AI Concept",
+        issuer: "Microsoft",
+        date: "2024",
+        logo: "/microsoft.jpeg",
+      },
+      {
+        name: "AI Python",
+        issuer: "DeepLearning.AI",
+        date: "2024",
+        logo: "/deeplearningai.jpeg",
+      },
     ],
     education: [
-      { degree: "Intermediate in Engineering", institution: "NCR-CET COLLEGE", year: "2021-2023", logo: "/ncr.png" },
-      { degree: "Bachelor's in Artificial Intelligence", institution: "Sindh Madressatul Islam University", year: "2023-Present", logo: "/smiu.jpeg" },
-      { degree: "Cloud Native Agentic AI Engineering", institution: "PIAIC", year: "2024-Present", logo: "/piaic.jpeg" }
+      {
+        degree: "Intermediate in Engineering",
+        institution: "NCR-CET COLLEGE",
+        year: "2021-2023",
+        logo: "/ncr.png",
+      },
+      {
+        degree: "Bachelor's in Artificial Intelligence",
+        institution: "Sindh Madressatul Islam University",
+        year: "2023-Present",
+        logo: "/smiu.jpeg",
+      },
+      {
+        degree: "Cloud Native Agentic AI Engineering",
+        institution: "PIAIC",
+        year: "2024-Present",
+        logo: "/piaic.jpeg",
+      },
     ],
     skills: [
       {
         category: "Web Development",
-        items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX Design", "Clerk", "Sanity CMS", "Radix UI", "Framer Motion"]
+        items: [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "UI/UX Design",
+          "Clerk",
+          "Sanity CMS",
+          "Radix UI",
+          "Framer Motion",
+        ],
       },
       {
         category: "Agentic AI",
-        items: ["OpenAI Agent SDK", "CrewAI", "LangChain", "RAG", "Agentic AI", "Claude Code CLI", "Qdrant"]
+        items: [
+          "OpenAI Agent SDK",
+          "CrewAI",
+          "LangChain",
+          "RAG",
+          "Agentic AI",
+          "Claude Code CLI",
+          "Qdrant",
+          "Prompt Engineering",
+          "MCP",
+        ],
       },
       {
         category: "Backend & Data",
-        items: ["Python", "FastAPI", "PostgreSQL", "Git", "Vercel", "Stripe", "Figma", "Gmail API", "Watchdog"]
-      }
-    ]
+        items: [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "Git",
+          "Vercel",
+          "Stripe",
+          "API",
+          "Supabase",
+          "Docker",
+          "Google Cloud",
+        ],
+      },
+    ],
   },
   technicalSkills: {
-    "Web Stack": ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS", "Node.js", "Clerk", "Radix UI", "Framer Motion"],
-    "AI Stack": ["Python", "OpenAI-agent-sdk", "crewai", "langchain", "FastApi", "Qdrant", "Google Generative AI"],
-    "tools": ["Git", "Vercel", "Stripe", "Figma", "Claude Code CLI", "Gmail API", "Watchdog", "Supabase"],
-    "specializations": [
-      "E-commerce Development",
-      "CMS Integration", 
-      "Web Performance Optimization",
+    "Web Stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Sanity CMS",
+      "Tailwind CSS",
+      "Node.js",
+      "Clerk",
+      "Radix UI",
+      "Framer Motion",
+    ],
+    "AI Stack": [
+      "Python",
       "OpenAI-agent-sdk",
-      "RAG"
-    ]
-  }
-}
+      "CrewAI",
+      "LangChain",
+      "FastAPI",
+      "Qdrant",
+      "Google Generative AI",
+      "Prompt Engineering",
+      "MCP",
+    ],
+    tools: [
+      "Git",
+      "Vercel",
+      "Stripe",
+      "Figma",
+      "Claude Code CLI",
+      "Gmail API",
+      "Supabase",
+      "Docker",
+      "Google Cloud",
+    ],
+    specializations: [
+      "Agentic AI Product Development",
+      "E-commerce Development",
+      "CMS Integration",
+      "Web Performance Optimization",
+      "RAG Pipelines",
+    ],
+  },
+};
 
 export default portfolioData;

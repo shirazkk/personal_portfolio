@@ -39,11 +39,7 @@ const Certificates = () => {
             <div key={index} className="cert-card p-8 bg-[#111] border border-white/5 hover:border-[#FF6B00]/30 transition-[border-color,background-color] duration-300 flex flex-col justify-between group">
               <div>
                 <div className="w-12 h-12 bg-[#FF6B00]/10 flex items-center justify-center mb-6 group-hover:bg-[#FF6B00] transition-colors">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:text-white text-[#FF6B00]">
-                    <path d="M12 15l-2 5L12 18l2 2-2-5z"/>
-                    <path d="M12 2l3 9H9l3-9z"/>
-                    <circle cx="12" cy="12" r="10"/>
-                  </svg>
+                  <img src={cert.logo} alt={cert.issuer} className="w-8 h-8 object-contain" />
                 </div>
                 <h3 className="text-2xl font-bebas mb-2 leading-tight">{cert.name}</h3>
                 <p className="text-white/40 uppercase tracking-widest text-[10px] font-bold">{cert.issuer}</p>
