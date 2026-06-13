@@ -32,10 +32,17 @@ const About = () => {
       
       <div className="about-content grid md:grid-cols-2 gap-12 md:gap-24 items-start about-content-inner">
         <div className="relative">
-          &quot;
-          <h2 className="text-4xl md:text-6xl font-bebas leading-tight relative z-10">
+          <div className="absolute -left-4 -top-8 h-24 w-24 border-l-2 border-t-2 border-[#FF6B00]/60" />
+          <h2 className="text-4xl md:text-6xl font-bebas leading-tight relative z-10 max-w-xl">
             Building intelligent futures, one agent at a time.
           </h2>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {portfolioData.about.interests.slice(0, 4).map((interest) => (
+              <span key={interest} className="border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/55">
+                {interest}
+              </span>
+            ))}
+          </div>
         </div>
         
         <div className="flex flex-col gap-6">
@@ -44,19 +51,13 @@ const About = () => {
             {portfolioData.about.bio}
           </p>
           
-          <div className="mt-8 flex gap-12">
-            <div>
-              <p className="text-4xl font-bebas text-[#FF6B00]">2+</p>
-              <p className="text-xs uppercase tracking-widest text-white/50">Years Exp</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bebas text-[#FF6B00]">10+</p>
-              <p className="text-xs uppercase tracking-widest text-white/50">AI Agents</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bebas text-[#FF6B00]">20+</p>
-              <p className="text-xs uppercase tracking-widest text-white/50">Projects</p>
-            </div>
+          <div className="mt-8 grid sm:grid-cols-3 gap-4">
+            {portfolioData.stats.map((stat) => (
+              <div key={stat.label} className="border border-white/10 bg-white/[0.04] p-5">
+                <p className="text-4xl font-bebas text-[#FF6B00]">{stat.value}</p>
+                <p className="text-xs uppercase tracking-widest text-white/50">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

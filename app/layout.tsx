@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bebas_Neue, Manrope } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/providers/LenisProvider";
+import { portfolioData } from "@/data/portfolio";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -15,8 +16,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Shiraz Ali | Full Stack Agentic AI Developer",
-  description: "Personal portfolio of Shiraz Ali, specialized in Agentic AI and Full Stack Development.",
+  title: portfolioData.meta.title,
+  description: portfolioData.meta.description,
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-96x96.png",

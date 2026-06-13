@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/gsap/SKILL.md",
       "computedHash": "ef2658b3705d3fd5c8e38d197b31521553a0bee3b40bda2ab70bf22bd6b88854"
+    },
+    "threejs-animation": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-animation/SKILL.md",
+      "computedHash": "8c50b1493812bd88f3ed0637c0c3c5d846afdb322157b67b2ffba4ce8e552835"
     }
   }
 }

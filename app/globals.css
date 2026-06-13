@@ -29,6 +29,7 @@ html.lenis {
 
 body {
   @apply font-manrope bg-bg-dark text-white;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,5 +40,21 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #FF6B00;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

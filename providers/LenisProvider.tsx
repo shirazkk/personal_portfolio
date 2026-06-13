@@ -1,11 +1,12 @@
 'use client'
 import { ReactLenis } from 'lenis/react'
+import type { LenisRef } from 'lenis/react'
 import { ReactNode, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function LenisProvider({ children }: { children: ReactNode }) {
-  const lenisRef = useRef<any>(null)
+  const lenisRef = useRef<LenisRef>(null)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)

@@ -1,27 +1,22 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useLenis } from 'lenis/react';
+import { portfolioData } from '@/data/portfolio';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const lenis = useLenis();
 
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
-    { name: 'Credentials', href: '#credentials' },
-  ];
+  const navLinks = portfolioData.navigation.filter((link) => link.label !== 'Home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Active section detection
-      const sections = ['about', 'skills', 'projects', 'experience', 'education', 'credentials'];
+      const sections = ['about', 'skills', 'projects', 'experience', 'blog', 'education', 'credentials', 'contact'];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -39,6 +34,8 @@ const Navbar = () => {
   }, []);
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return;
+
     e.preventDefault();
     lenis?.scrollTo(href, { offset: -80 });
   };
@@ -50,27 +47,28 @@ const Navbar = () => {
           ? 'bg-[#0a0a0a]/90 backdrop-blur-xl border-[#FF6B00]/30 py-4' 
           : 'bg-transparent border-white/5'
       }`}>
-        <a 
-          href="#" 
+        <Link 
+          href="/" 
           onClick={(e) => { e.preventDefault(); lenis?.scrollTo(0); }}
           className="text-[#FF6B00] font-bebas text-2xl tracking-tighter mr-2 md:mr-4 shrink-0"
+          aria-label="Go to top"
         >
           SA
-        </a>
+        </Link>
         
         <div className="flex items-center gap-4 md:gap-6 lg:gap-8">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.slice(1);
+            const isActive = link.href.startsWith('#') && activeSection === link.href.slice(1);
             return (
               <a
-                key={link.name}
+                key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
                 className={`text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 relative py-1 shrink-0 ${
                   isActive ? 'text-[#FF6B00]' : 'text-white/50 hover:text-white'
                 }`}
               >
-                {link.name}
+                {link.label}
                 {isActive && (
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#FF6B00] rounded-full" />
                 )}

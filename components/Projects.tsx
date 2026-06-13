@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Code, Globe } from "lucide-react";
+import Image from "next/image";
 
 import SectionTitle from "./SectionTitle";
 
@@ -55,10 +56,12 @@ const Projects = () => {
             className="project-card group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#FF6B00] transition-[border-color,background-color] duration-500"
           >
             <div className="aspect-video w-full bg-[#111] overflow-hidden relative">
-              <img
+              <Image
                 src={project.bannerImage}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
 
@@ -84,6 +87,8 @@ const Projects = () => {
                   <a
                     href={project.githubUrl}
                     target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} source code`}
                     className="text-white hover:text-[#FF6B00] transition-colors"
                   >
                     <Code size={24} />
@@ -93,6 +98,8 @@ const Projects = () => {
                   <a
                     href={project.liveUrl}
                     target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} live website`}
                     className="text-white hover:text-[#FF6B00] transition-colors"
                   >
                     <Globe size={24} />
@@ -108,8 +115,12 @@ const Projects = () => {
 
       <div className="mt-20 flex justify-center">
         <a
-          href={portfolioData.personal.social.find(s => s.platform === 'GitHub')?.url}
+          href={
+            portfolioData.personal.social.find((s) => s.platform === "GitHub")
+              ?.url
+          }
           target="_blank"
+          rel="noreferrer"
           className="px-8 py-3 border border-white/20 text-white font-bebas text-xl hover:bg-[#FF6B00] hover:border-[#FF6B00] transition-all duration-300"
         >
           See More Projects

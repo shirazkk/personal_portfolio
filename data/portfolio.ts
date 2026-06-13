@@ -1,23 +1,40 @@
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  heroLabel: string;
+  tags: string[];
+  body: {
+    heading: string;
+    paragraphs: string[];
+  }[];
+};
+
 export const portfolioData = {
   meta: {
-    title: "Shiraz Ali | Web Developer • Agentic AI Developer",
+    title: "Shiraz Ali | Full Stack Agentic AI Developer",
     description:
-      "Portfolio website showcasing web development and Agentic AI work and skills in Next.js, React, TypeScript, sanity(CMS), modern web technologies, openai-agent-sdk, crewai, langchain and LLM applications",
+      "Portfolio website showcasing full-stack web development, Agentic AI systems, Next.js, React, TypeScript, Sanity CMS, OpenAI Agent SDK, CrewAI, LangChain, and LLM applications.",
   },
   personal: {
     name: "Shiraz Ali",
-    title: "Web Developer • Agentic AI Developer",
+    title: "Full Stack Developer | Agentic AI Developer",
     location: "Karachi, Sindh, Pakistan",
     avatar: "/profile.png",
     email: "shirazkk8@gmail.com",
     phone: "+92 327 3599802",
     availableForWork: true,
+    heroStatement:
+      "I design cinematic web experiences and build autonomous AI systems that turn product ideas into working software.",
     badges: [
       "Next.js",
-      "sanity(CMS)",
+      "Sanity CMS",
       "TypeScript",
-      "Openai-agent-sdk",
-      "Crewai",
+      "OpenAI Agent SDK",
+      "CrewAI",
     ],
     social: [
       {
@@ -34,39 +51,46 @@ export const portfolioData = {
       { platform: "Instagram", url: "#", icon: "Instagram" },
     ],
   },
+  navigation: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Blog", href: "#blog" },
+    { label: "Contact", href: "#contact" },
+  ],
+  stats: [
+    { value: "20+", label: "Projects shipped" },
+    { value: "10+", label: "AI agents built" },
+    { value: "2+", label: "Years building" },
+  ],
   about: {
-    bio: "I am a Full Stack Web Developer and Agentic AI Developer based in Karachi, Pakistan. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS, and I design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. From crafting pixel-perfect interfaces to architecting multi-agent AI pipelines, I work across the full spectrum of modern product development. As the founder of CodePulse Innovations, I turned that vision into reality by building FolioGenerator.com — an AI-driven platform that generates professional portfolio websites from resumes instantly.",
+    bio: "I am a Full Stack Web Developer and Agentic AI Developer based in Karachi, Pakistan. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS, and I design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. From crafting pixel-perfect interfaces to architecting multi-agent AI pipelines, I work across the full spectrum of modern product development. As the founder of CodePulse Innovations, I turned that vision into reality by building FolioGenerator.com, an AI-driven platform that generates professional portfolio websites from resumes instantly.",
     focus: [
-      "Building full stack web applications with Next.js, React, TypeScript and Sanity CMS",
-      "Designing and deploying Agentic AI systems using OpenAI Agent SDK, CrewAI and LangChain",
+      "Building full-stack web applications with Next.js, React, TypeScript, and Sanity CMS",
+      "Designing and deploying Agentic AI systems using OpenAI Agent SDK, CrewAI, and LangChain",
       "Developing AI-powered products from idea to launch with real-world impact",
-      "Creating scalable backend APIs with FastAPI, PostgreSQL and RAG pipelines",
+      "Creating scalable backend APIs with FastAPI, PostgreSQL, and RAG pipelines",
       "Integrating AI into web platforms for smarter, autonomous user experiences",
     ],
     languages: [
-      { name: "English", proficiency: "Intermediate", level: 70, flag: "🇺🇸" },
-      { name: "Urdu", proficiency: "Native", level: 100, flag: "🇵🇰" },
+      { name: "English", proficiency: "Intermediate", level: 70, flag: "US" },
+      { name: "Urdu", proficiency: "Native", level: 100, flag: "PK" },
     ],
     interests: [
       "Agentic AI",
       "LLM applications",
-      "AI-Powered Products",
-      "E-commerce Development",
-      "UI/UX Design",
-      "Prompt Engineering",
+      "AI-powered products",
+      "E-commerce development",
+      "UI/UX design",
+      "Prompt engineering",
     ],
   },
-  navigation: [
-    { label: "Home", href: "/" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Credentials", href: "#credentials" },
-  ],
   experience: [
     {
       title: "Founder",
-      company: "CodePulse Innovations · Self-employed",
+      company: "CodePulse Innovations - Self-employed",
       period: "Jun 2025 - Present",
       location: "Karachi Division, Sindh, Pakistan",
       description:
@@ -89,7 +113,7 @@ export const portfolioData = {
     },
     {
       title: "Frontend Development Intern",
-      company: "DevelopersHub Corporation©",
+      company: "DevelopersHub Corporation",
       period: "March 2025 - July 2025",
       location: "Remote",
       description:
@@ -98,12 +122,12 @@ export const portfolioData = {
         "Developed a responsive e-commerce website with pixel-perfect accuracy from Figma designs",
         "Created user-friendly interfaces for a networking platform with dashboard and chatbot integration",
         "Enhanced user engagement through optimized UI/UX implementations",
-        "Successfully delivered projects using Next.js, Tailwind CSS, Typescript, and Shadcn",
+        "Successfully delivered projects using Next.js, Tailwind CSS, TypeScript, and Shadcn",
       ],
       technologies: [
         "Next.js",
         "Tailwind CSS",
-        "Typescript",
+        "TypeScript",
         "React",
         "Figma",
         "UI/UX Design",
@@ -154,9 +178,9 @@ export const portfolioData = {
       techStack: [
         "Python",
         "Claude Code CLI",
-        "Mcp Servers",
+        "MCP Servers",
         "Watchdog",
-        "obsidian-vault",
+        "Obsidian Vault",
       ],
       category: "AI/Agentic",
       bannerImage: "/personal_ai__employee.png",
@@ -175,8 +199,8 @@ export const portfolioData = {
         "Tailwind CSS",
         "Framer Motion",
         "Google Gemini",
-        "vercel ai sdk",
-        "cloud run",
+        "Vercel AI SDK",
+        "Cloud Run",
       ],
       category: "AI/Agentic",
       bannerImage: "/ustad_ai.png",
@@ -196,9 +220,9 @@ export const portfolioData = {
       featured: false,
     },
     {
-      title: "Physical AI Book — Hackathon",
+      title: "Physical AI Book - Hackathon",
       description:
-        "AI-powered book built with Docusaurus, Qdrant vector search, and Google Gen-Ai. Developed using Spec-Driven Development.",
+        "AI-powered book built with Docusaurus, Qdrant vector search, and Google Gen-AI. Developed using Spec-Driven Development.",
       techStack: [
         "Docusaurus",
         "FastAPI",
@@ -216,9 +240,112 @@ export const portfolioData = {
       featured: true,
     },
   ],
+  blogPosts: [
+    {
+      slug: "agentic-ai-product-systems",
+      title: "How I Think About Agentic AI Product Systems",
+      excerpt:
+        "A practical framework for moving from single prompts to reliable multi-step AI systems that can plan, act, and recover.",
+      date: "2026-06-01",
+      readTime: "5 min read",
+      category: "Agentic AI",
+      heroLabel: "Systems that execute",
+      tags: ["Agents", "LLMs", "Product Engineering"],
+      body: [
+        {
+          heading: "Start with the job, not the model",
+          paragraphs: [
+            "The strongest AI products begin with a clear operational job. The model is only one part of that system. The surrounding workflow, memory, tools, evaluation, and recovery paths decide whether the experience feels useful or fragile.",
+            "For client work, I map the user's goal into repeatable states: input, planning, tool use, review, and final output. That structure makes the agent easier to test and easier to improve.",
+          ],
+        },
+        {
+          heading: "Design agents around constraints",
+          paragraphs: [
+            "Good agents need boundaries. They should know what tools are available, when to ask for more context, and when to stop. Without those constraints, an agent can look impressive in demos but fail in production.",
+            "I prefer smaller agents with focused responsibilities over a single broad assistant. The result is easier debugging, clearer prompts, and better ownership of each step.",
+          ],
+        },
+        {
+          heading: "Make reliability visible",
+          paragraphs: [
+            "A useful agentic interface should show progress, decisions, and recoverable errors. Users trust a system more when they can understand what is happening and correct it when needed.",
+            "The product layer matters as much as the AI layer. Clear UI, fast feedback, and honest limitations turn complex automation into something people can actually use.",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "portfolio-automation-from-resumes",
+      title: "Building Portfolio Automation From Resume Inputs",
+      excerpt:
+        "What I learned turning resumes into structured portfolio websites with AI-assisted extraction, design rules, and generation workflows.",
+      date: "2026-05-18",
+      readTime: "4 min read",
+      category: "AI Products",
+      heroLabel: "Resume to website",
+      tags: ["Automation", "Portfolio", "Next.js"],
+      body: [
+        {
+          heading: "The resume is raw material",
+          paragraphs: [
+            "A resume has experience, skills, education, and projects, but it is not automatically a good website. The first challenge is transforming that document into a clear story.",
+            "The extraction layer should identify what matters most: strongest projects, proof of skills, recent work, contact details, and the audience the portfolio should target.",
+          ],
+        },
+        {
+          heading: "Generation needs design rules",
+          paragraphs: [
+            "AI can write copy and produce structure, but a professional portfolio needs consistent visual rules. Spacing, hierarchy, image handling, CTA placement, and responsive behavior need defined constraints.",
+            "That is why I treat generation as a product workflow rather than a single prompt. Each step narrows the output until it is usable and editable.",
+          ],
+        },
+        {
+          heading: "The real value is speed with control",
+          paragraphs: [
+            "The goal is not to remove the person from the portfolio. The goal is to get them from a blank page to a strong first version quickly.",
+            "A good automation system should produce something polished enough to share, but structured enough that the owner can refine it as their career changes.",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "full-stack-ai-products",
+      title: "What Full-Stack AI Products Need Beyond a Chat Box",
+      excerpt:
+        "Modern AI applications need product thinking, backend systems, evaluation, and interface design, not just a conversational surface.",
+      date: "2026-04-30",
+      readTime: "6 min read",
+      category: "Full Stack",
+      heroLabel: "Beyond chat UI",
+      tags: ["Full Stack", "RAG", "UX"],
+      body: [
+        {
+          heading: "AI features still need product architecture",
+          paragraphs: [
+            "A chat box is often the fastest interface to prototype, but it is rarely the full product. Real users need saved state, permissions, clear outputs, revision flows, and predictable performance.",
+            "The backend has to support that experience with structured data, retrieval, queueing, logging, and guardrails.",
+          ],
+        },
+        {
+          heading: "Interfaces should reduce uncertainty",
+          paragraphs: [
+            "When an AI system is doing complex work, the UI should make each step legible. Inputs should be specific, output formats should be clear, and users should always know what action to take next.",
+            "The best AI interfaces often combine forms, previews, editors, and status panels. Conversation is just one interaction pattern.",
+          ],
+        },
+        {
+          heading: "Shipping means measuring behavior",
+          paragraphs: [
+            "After launch, the question becomes whether the system performs reliably for real users. That requires logging failures, reviewing outputs, and improving prompts or tools based on evidence.",
+            "Full-stack AI work is strongest when product, frontend, backend, and evaluation are treated as one system.",
+          ],
+        },
+      ],
+    },
+  ] satisfies BlogPost[],
   credentials: {
     certifications: [
-      // ── 2026 ──────────────────────────────────────
       {
         name: "Prompt Design in Vertex AI Skill Badge",
         issuer: "Google",
@@ -261,8 +388,6 @@ export const portfolioData = {
         date: "2026",
         logo: "/piaic.jpeg",
       },
-
-      // ── 2025 ──────────────────────────────────────
       {
         name: "Docker Fundamentals | Crash Course",
         issuer: "Udemy",
@@ -287,8 +412,6 @@ export const portfolioData = {
         date: "2025",
         logo: "/uniathena.jpeg",
       },
-
-      // ── 2024 ──────────────────────────────────────
       {
         name: "React Js",
         issuer: "HackerRank",
@@ -394,7 +517,7 @@ export const portfolioData = {
     ],
     "AI Stack": [
       "Python",
-      "OpenAI-agent-sdk",
+      "OpenAI Agent SDK",
       "CrewAI",
       "LangChain",
       "FastAPI",
