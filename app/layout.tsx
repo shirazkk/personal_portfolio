@@ -33,10 +33,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bebasNeue.variable} ${manrope.variable}`}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="HxEe42MKrhWqwDoFend5PiMK1GZHuXi6ADlUcWj6Ulg"
+        />
+      </head>
       <body className="bg-[#0a0a0a] text-white font-manrope selection:bg-[#FF6B00] selection:text-white">
-        <LenisProvider>
-          {children}
-        </LenisProvider>
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
