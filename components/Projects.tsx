@@ -4,10 +4,10 @@ import { portfolioData } from "@/data/portfolio";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Code, Globe } from "lucide-react";
-import Image from "next/image";
+import { MoveRight } from "lucide-react";
 
 import SectionTitle from "./SectionTitle";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -16,114 +16,88 @@ const Projects = () => {
     () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      gsap.from(".project-card", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 75%",
-        },
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power4.out",
-        onComplete: () => ScrollTrigger.refresh(),
+      // Animate each card individually as it enters the viewport
+      // This prevents cards being invisible if user lands directly on section
+      const cards = document.querySelectorAll(".project-card");
+
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%", // fire as soon as card top is 95% down the viewport
+            toggleActions: "play none none none",
+            once: true,
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          delay: i * 0.05, // subtle stagger via delay
+          ease: "power3.out",
+        });
       });
     },
-    { scope: container },
+    { scope: container }
   );
 
   return (
     <section
       id="projects"
       ref={container}
-      className="py-24 md:py-40 px-6 md:px-12 max-w-7xl mx-auto"
+      className="py-32 md:py-48 px-6 md:px-12 max-w-[1400px] mx-auto"
     >
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-        <div>
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-10">
+        <div className="relative">
           <SectionTitle title="Selected Works" />
-          <div className="h-2 w-32 bg-[#FF6B00]" />
+          <div className="absolute -bottom-3 left-0 h-[2px] w-24 bg-gradient-to-r from-[#FF6B00] to-transparent" />
         </div>
-        <p className="max-w-md text-white/50 text-lg">
-          A collection of intelligent systems and high-performance web
-          experiences.
-        </p>
+
+        <div className="flex flex-col gap-4 max-w-md">
+          <p className="text-white/40 text-base leading-relaxed">
+            From autonomous AI agents to cinematic frontends, these projects
+            represent my obsession with performance, intelligence, and high-end design.
+          </p>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-px bg-white/15" />
+            <span className="text-[9px] uppercase tracking-[0.35em] text-white/30">
+              Scroll to explore
+            </span>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Simple uniform grid — 3 columns on desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {portfolioData.projects.map((project, index) => (
-          <div
+          <ProjectCard
             key={index}
-            className="project-card group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#FF6B00] transition-[border-color,background-color] duration-500"
-          >
-            <div className="aspect-video w-full bg-[#111] overflow-hidden relative">
-              <Image
-                src={project.bannerImage}
-                alt={project.title}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div className="p-8">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] uppercase tracking-widest text-[#FF6B00] font-bold"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 className="text-4xl font-bebas mb-4 group-hover:text-[#FF6B00] transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-white/60 mb-6 line-clamp-2">
-                {project.description}
-              </p>
-              <div className="flex gap-4">
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${project.title} source code`}
-                    className="text-white hover:text-[#FF6B00] transition-colors"
-                  >
-                    <Code size={24} />
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${project.title} live website`}
-                    className="text-white hover:text-[#FF6B00] transition-colors"
-                  >
-                    <Globe size={24} />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF6B00] blur-[120px] opacity-0 group-hover:opacity-20 transition-opacity" />
-          </div>
+            project={project}
+            index={index}
+          />
         ))}
       </div>
 
-      <div className="mt-20 flex justify-center">
+      {/* Footer CTA */}
+      <div className="mt-24 flex flex-col items-center gap-5">
+        <p className="text-white/20 text-sm font-light italic">
+          More systems being built in the dark...
+        </p>
+
         <a
           href={
-            portfolioData.personal.social.find((s) => s.platform === "GitHub")
-              ?.url
+            portfolioData.personal.social.find((s) => s.platform === "GitHub")?.url
           }
           target="_blank"
           rel="noreferrer"
-          className="px-8 py-3 border border-white/20 text-white font-bebas text-xl hover:bg-[#FF6B00] hover:border-[#FF6B00] transition-all duration-300"
+          className="group relative flex items-center gap-3 px-10 py-4 bg-white text-black font-bebas text-xl overflow-hidden rounded-full hover:bg-[#FF6B00] hover:text-white transition-colors duration-500"
         >
-          See More Projects
+          <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
+            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </span>
+          <span className="relative z-10 flex items-center gap-3">
+            Explore All Repositories
+            <MoveRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+          </span>
         </a>
       </div>
     </section>

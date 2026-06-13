@@ -43,6 +43,14 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+@utility transform-style-3d {
+  transform-style: preserve-3d;
+}
+
 :focus-visible {
   outline: 2px solid #FF6B00;
   outline-offset: 4px;

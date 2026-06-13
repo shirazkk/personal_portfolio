@@ -172,6 +172,45 @@ export const portfolioData = {
       featured: true,
     },
     {
+      title: "AI Lead Generator",
+      description:
+        "Autonomous, end-to-end AI system that identifies businesses with weak online presence, scores their opportunity value, and generates hyper-personalized cold outreach emails — with a real-time Next.js dashboard and one-click email delivery via Resend.",
+      techStack: [
+        "Next.js",
+        "FastAPI",
+        "Google Gemini",
+        "OpenRouter",
+        "Firecrawl",
+        "Supabase",
+        "Resend",
+        "Framer Motion",
+        "TypeScript",
+      ],
+      category: "AI/Agentic",
+      bannerImage: "/ai_lead_generator.png",
+      githubUrl: "https://github.com/shirazkk/ai-lead-generator",
+      liveUrl: null,
+      featured: true,
+    },
+    {
+      title: "PaisaLog",
+      description:
+        "Collaborative household finance tracker with real-time expense syncing, transaction categorization, and multi-member household management — built on Supabase with Row Level Security.",
+      techStack: [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Supabase Auth",
+      ],
+      category: "Web App",
+      bannerImage: "/paisalog.png",
+      githubUrl: "https://github.com/shirazkk/paisalog",
+      liveUrl: null,
+      featured: false,
+    },
+    {
       title: "Personal AI Employee",
       description:
         "A local-first, file-based AI assistant powered by Claude Code CLI, Obsidian, and Gmail polling.",

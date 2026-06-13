@@ -1,9 +1,32 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
-import SectionTitle from "./SectionTitle";
 
-export default function BlogPreview() {
+import SectionTitle from "./SectionTitle";
+import { POSTS_QUERY } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
+
+interface BlogPost {
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+}
+
+export default async function BlogPreview() {
+  let posts: BlogPost[] = [];
+  try {
+    posts = await client.fetch(POSTS_QUERY);
+  } catch (error) {
+    console.error("Error fetching posts from Sanity:", error);
+  }
+
+  if (posts.length === 0) return null;
+
+  // Show only first 3 posts
+  const previewPosts = posts.slice(0, 3);
+
   return (
     <section id="blog" className="py-24 md:py-40 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
@@ -30,7 +53,7 @@ export default function BlogPreview() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {portfolioData.blogPosts.map((post, index) => (
+        {previewPosts.map((post: BlogPost, index: number) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}

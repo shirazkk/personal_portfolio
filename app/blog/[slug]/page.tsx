@@ -1,19 +1,23 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import { POST_QUERY, SLUGS_QUERY } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
+
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return portfolioData.blogPosts.map((post) => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  const slugs = await client.fetch(SLUGS_QUERY);
+  return slugs.map((slug: string) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = portfolioData.blogPosts.find((item) => item.slug === slug);
+  const post = await client.fetch(POST_QUERY, { slug });
 
   if (!post) {
     return {
@@ -22,14 +26,64 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   }
 
   return {
-    title: `${post.title} | Shiraz Ali`,
-    description: post.excerpt,
+    title: `${post.metaTitle || post.title} | Shiraz Ali`,
+    description: post.metaDescription || post.excerpt,
   };
 }
 
+const ptComponents: PortableTextComponents = {
+  block: {
+    h1: ({ children }) => (
+      <h1 className="mb-6 font-bebas text-5xl md:text-7xl text-white">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="mb-5 mt-10 font-bebas text-4xl text-white">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-4 mt-8 font-bebas text-3xl text-white">{children}</h3>
+    ),
+    normal: ({ children }) => (
+      <p className="text-lg leading-8 text-white/65 mb-6">{children}</p>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-[#FF6B00] pl-6 my-8 italic text-white/80 text-xl">
+        {children}
+      </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="list-disc list-inside space-y-3 mb-8 text-white/65 text-lg">
+        {children}
+      </ul>
+    ),
+  },
+  marks: {
+    link: ({ children, value }) => {
+      const rel = !value.href.startsWith("/")
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <a
+          href={value.href}
+          rel={rel}
+          className="text-[#FF6B00] underline transition hover:text-[#FF8533]"
+        >
+          {children}
+        </a>
+      );
+    },
+    strong: ({ children }) => (
+      <strong className="font-bold text-white">{children}</strong>
+    ),
+  },
+};
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = portfolioData.blogPosts.find((item) => item.slug === slug);
+  const post = await client.fetch(POST_QUERY, { slug });
 
   if (!post) {
     notFound();
@@ -75,7 +129,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
+              {post.tags?.map((tag: string) => (
                 <span
                   key={tag}
                   className="border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-white/55"
@@ -86,24 +140,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          <div className="space-y-12 border-t border-white/10 pt-12">
-            {post.body.map((section) => (
-              <section key={section.heading}>
-                <h2 className="mb-5 font-bebas text-4xl text-white">
-                  {section.heading}
-                </h2>
-                <div className="space-y-5">
-                  {section.paragraphs.map((paragraph) => (
-                    <p
-                      key={paragraph}
-                      className="text-lg leading-8 text-white/65"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))}
+          <div className="border-t border-white/10 pt-12">
+            <div className="portable-text">
+              <PortableText value={post.body} components={ptComponents} />
+            </div>
           </div>
         </div>
       </article>

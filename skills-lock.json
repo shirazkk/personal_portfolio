@@ -7,6 +7,12 @@
       "skillPath": "skills/gsap/SKILL.md",
       "computedHash": "ef2658b3705d3fd5c8e38d197b31521553a0bee3b40bda2ab70bf22bd6b88854"
     },
+    "sanity-best-practices": {
+      "source": "sanity-io/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/sanity-best-practices/SKILL.md",
+      "computedHash": "52c89395aa6ed847a92841574c6f65e24afae01e2e79f7a1d92a49a7294a6098"
+    },
     "threejs-animation": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
