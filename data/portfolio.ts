@@ -149,7 +149,6 @@ export const portfolioData = {
       ],
       category: "Web App",
       bannerImage: "/ziybex.png",
-      githubUrl: "https://github.com/shirazkk/Ziybex",
       liveUrl: "https://ziybex.com",
       featured: true,
     },

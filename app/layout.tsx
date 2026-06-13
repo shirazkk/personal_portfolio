@@ -18,6 +18,26 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: portfolioData.meta.title,
   description: portfolioData.meta.description,
+  openGraph: {
+    title: portfolioData.meta.title,
+    description: portfolioData.meta.description,
+    url: "https://shirazabubakar.vercel.app",
+    siteName: "Shiraz Ali Portfolio",
+    images: [
+      {
+        url: "https://shirazabubakar.vercel.app/profile.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: portfolioData.meta.title,
+    description: portfolioData.meta.description,
+    images: ["https://shirazabubakar.vercel.app/profile.png"],
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-96x96.png",
