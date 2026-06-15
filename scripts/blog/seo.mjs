@@ -3,20 +3,26 @@ import googleTrends from 'google-trends-api';
 import { withRetry } from './utils.mjs';
 import { searchSerperOrganic } from './research.mjs'; // Need to export this from research.mjs
 
-export async function generateTopicCandidate(research, label, feedback = null) {
+export async function generateTopicCandidate(research, label, recentPostTitles = [], feedback = null) {
   const feedbackBlock = feedback
     ? `\n\nIMPORTANT: A previous candidate was rejected as too generic. Feedback: "${feedback}"\nGenerate a DIFFERENT, more specific topic this time.`
+    : '';
+
+  const historyBlock = recentPostTitles.length > 0
+    ? `\n\nALREADY PUBLISHED TITLES (AVOID REPEATING THESE OR THEIR SPECIFIC NICHES):\n${recentPostTitles.map(t => `- ${t}`).join('\n')}\n`
     : '';
 
   const prompt = `
 You are an SEO strategist for a Full Stack & Agentic AI developer's portfolio blog.
 
 Today's date context: ${label}
+${historyBlock}
 
 Based on the following real, dated research data, your job is to:
 1. Identify ONE blog topic that is tied to a SPECIFIC named tool, model, framework, version number, or event mentioned in the research below — NOT a generic evergreen topic.
-2. Extract 5-8 SEO keywords specifically for that topic. Keywords must be specific long-tail phrases people actually search.
-3. Provide "sourceEvidence": a short quote or reference (1-2 sentences) from the research that justifies why this topic is tied to something NEW and RECENT.
+2. Diversify the content niche. If the recent titles are heavily focused on one area (like AI agents), switch to another area of expertise like Next.js performance, TypeScript features, CSS/UI trends, or Backend architecture.
+3. Extract 5-8 SEO keywords specifically for that topic. Keywords must be specific long-tail phrases people actually search.
+4. Provide "sourceEvidence": a short quote or reference (1-2 sentences) from the research that justifies why this topic is tied to something NEW and RECENT.
 
 Research Data:
 ${research}
@@ -58,7 +64,7 @@ Answer with ONLY a raw JSON object (no markdown, no explanation):
   return callGeminiJSON(prompt, { retries: 3, baseDelayMs: 1500, label: 'Topic specificity check' });
 }
 
-export async function selectTopicAndKeywords(research) {
+export async function selectTopicAndKeywords(research, recentPostTitles = []) {
   console.log('🎯 Selecting specific, news-tied topic and SEO keywords...');
   const { getCurrentMonthYear } = await import('./utils.mjs');
   const { label } = getCurrentMonthYear();
@@ -67,7 +73,7 @@ export async function selectTopicAndKeywords(research) {
   let feedback = null;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    candidate = await generateTopicCandidate(research, label, feedback);
+    candidate = await generateTopicCandidate(research, label, recentPostTitles, feedback);
     console.log(`  Attempt ${attempt + 1}: "${candidate.topic}"`);
 
     const check = await checkTopicSpecificity(candidate);
@@ -90,12 +96,17 @@ export async function selectTopicAndKeywords(research) {
 export async function getTrendForKeyword(keyword) {
   try {
     const resultsJson = await withRetry(
-      () =>
-        googleTrends.interestOverTime({
+      async () => {
+        const res = await googleTrends.interestOverTime({
           keyword,
           startTime: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
-        }),
-      { retries: 2, baseDelayMs: 1000, label: `Google Trends "${keyword}"` }
+        });
+        if (typeof res === 'string' && res.trim().startsWith('<')) {
+          throw new Error('Google Trends returned HTML (likely blocked or rate limited)');
+        }
+        return res;
+      },
+      { retries: 2, baseDelayMs: 1500, label: `Google Trends "${keyword}"` }
     );
 
     const parsed = JSON.parse(resultsJson);

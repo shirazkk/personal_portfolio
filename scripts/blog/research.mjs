@@ -80,14 +80,28 @@ export async function getTrendingResearch() {
   const { label } = getCurrentMonthYear();
 
   const newsQueries = [
-    `AI model release ${label}`,
-    `new AI agent framework ${label}`,
-    `Next.js TypeScript update ${label}`,
-    `developer tools launch this week AI`,
-    `agentic AI news ${label}`,
+    `Next.js framework updates ${label}`,
+    `TypeScript new features ${label}`,
+    `modern CSS and Tailwind CSS trends ${label}`,
+    `backend engineering and database performance ${label}`,
+    `software architecture and design patterns ${label}`,
+    `web performance optimization ${label}`,
+    `new developer tools and productivity ${label}`,
+    `AI and Agentic AI news ${label}`,
   ];
 
-  const hnQueries = ['AI agent', 'LLM', 'Next.js', 'TypeScript', 'AI framework'];
+  const hnQueries = [
+    'Next.js',
+    'TypeScript',
+    'PostgreSQL',
+    'Redis',
+    'React',
+    'CSS',
+    'Performance',
+    'Architecture',
+    'AI agent',
+    'LLM',
+  ];
 
   console.log(`  📅 Anchoring queries to: ${label}`);
 

@@ -8,4 +8,4 @@ export const sanityConfig = {
 
 export const serperApiKey = process.env.SERPER_API_KEY;
 export const geminiApiKey = process.env.GEMINI_API_KEY;
-export const geminiModel = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
+export const geminiModel = process.env.GEMINI_MODEL;

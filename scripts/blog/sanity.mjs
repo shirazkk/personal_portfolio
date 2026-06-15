@@ -4,6 +4,13 @@ import { withRetry } from './utils.mjs';
 
 const client = createClient(sanityConfig);
 
+export async function getRecentPostTitles(limit = 10) {
+  return withRetry(
+    () => client.fetch(`*[_type == "post"] | order(date desc) [0...$limit] { title }`, { limit }),
+    { retries: 3, baseDelayMs: 1500, label: 'Fetch recent post titles' }
+  ).then(posts => posts.map(p => p.title));
+}
+
 export async function publishToSanity(postData) {
   console.log(`📤 Publishing: ${postData.title}`);
 
