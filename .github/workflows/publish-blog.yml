@@ -2,7 +2,7 @@ name: Publish AI Blog Post
 
 on:
   schedule:
-    - cron: '0 20 * * 1' # Every Monday at 8 PM UTC
+    - cron: '0 3 * * 1' # Every Monday at 8 AM UTC
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Publish Script
         env:
