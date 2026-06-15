@@ -58,6 +58,34 @@ export default function RootLayout({
           name="google-site-verification"
           content="HxEe42MKrhWqwDoFend5PiMK1GZHuXi6ADlUcWj6Ulg"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Shiraz Ali",
+                "jobTitle": "Full Stack Developer & Agentic AI Engineer",
+                "url": "https://shirazabubakar.vercel.app",
+                "image": "https://shirazabubakar.vercel.app/profile.png",
+                "sameAs": [
+                  "https://github.com/shirazkk",
+                  "https://www.linkedin.com/in/shirazali8",
+                  "https://x.com/KkShiraz"
+                ],
+                "description": portfolioData.meta.description,
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressRegion": "Sindh",
+                  "addressCountry": "PK"
+                }
+              }
+            }),
+          }}
+        />
       </head>
       <body className="bg-[#0a0a0a] text-white font-manrope selection:bg-[#FF6B00] selection:text-white">
         <LenisProvider>{children}</LenisProvider>

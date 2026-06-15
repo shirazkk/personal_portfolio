@@ -40,7 +40,15 @@ const Certificates = () => {
             <div key={index} className="cert-card p-8 bg-[#111] border border-white/5 hover:border-[#FF6B00]/30 transition-[border-color,background-color] duration-300 flex flex-col justify-between group">
               <div>
                 <div className="w-12 h-12 bg-[#FF6B00]/10 flex items-center justify-center mb-6 group-hover:bg-[#FF6B00] transition-colors">
-                  <Image src={cert.logo} alt={cert.issuer} width={32} height={32} className="object-contain" />
+                  <Image 
+  src={cert.logo} 
+  alt={cert.issuer} 
+  width={32} 
+  height={32} 
+  className="object-contain" 
+  priority={index < 3} // Eager load the first few
+  sizes="(max-width: 768px) 32px, 32px"
+/>
                 </div>
                 <h3 className="text-2xl font-bebas mb-2 leading-tight">{cert.name}</h3>
                 <p className="text-white/40 uppercase tracking-widest text-[10px] font-bold">{cert.issuer}</p>

@@ -15,9 +15,9 @@ export type BlogPost = {
 
 export const portfolioData = {
   meta: {
-    title: "Shiraz Ali | Full Stack Agentic AI Developer",
+    title: "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
     description:
-      "Portfolio website showcasing full-stack web development, Agentic AI systems, Next.js, React, TypeScript, Sanity CMS, OpenAI Agent SDK, CrewAI, LangChain, and LLM applications.",
+      "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
   },
   personal: {
     name: "Shiraz Ali",

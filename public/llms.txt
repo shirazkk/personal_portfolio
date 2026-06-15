@@ -1,0 +1,38 @@
+# Shiraz Ali
+
+> Shiraz Ali is a Full Stack Developer and Agentic AI Engineer based in Karachi, Pakistan, building production-grade web applications and multi-agent AI systems.
+
+Shiraz is the Lead Developer at Ziybex, a creative marketing and web agency, where he delivers full-stack solutions and AI-integrated marketing tools for clients. He specializes in multi-agent AI systems with real-world deployments (WhatsApp, Gmail, cron pipelines), full-stack apps on Google Cloud Run, Vercel, and Docker, and agentic AI infrastructure including MCP servers and the ACP protocol. He holds a BSc in Artificial Intelligence from SMIU and is pursuing Cloud Native Agentic AI Engineering at PIAIC. He is also the founder of CodePulse Innovations and creator of FolioGenerator.com, an AI-driven portfolio generation platform.
+
+## Links
+
+- [Portfolio](https://shirazabubakar.vercel.app): Personal portfolio website
+- [GitHub](https://github.com/shirazkk): Open-source projects and code
+- [LinkedIn](https://linkedin.com/in/shirazali8): Professional profile and experience
+- [Agency](https://ziybex.com): Ziybex creative marketing & web agency
+
+## Skills
+
+- Frontend: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+- AI & Agentic Systems: Anthropic, OpenAI, Google Gemini, LangChain, CrewAI, MCP
+- Backend & Infrastructure: FastAPI, Python, Node.js, Docker, Google Cloud Run, Vercel
+- Databases: PostgreSQL, Supabase, MySQL
+- Tools: Git, Figma, Playwright
+
+## Experience
+
+- Lead Developer at Ziybex (Present): Full-stack web solutions and AI-integrated marketing tools for clients including luxury event companies and real estate venues
+- Frontend Development Intern at DevelopersHub Corporation (Mar–Jul 2025): Built responsive e-commerce platforms and networking apps with AI chatbot integration using Next.js, TypeScript, Tailwind, and Shadcn
+- Founder of CodePulse Innovations: Built and launched FolioGenerator.com, an AI-driven resume-to-portfolio website generator
+
+## Achievements
+
+- GDG Kolachi Hackathon Winner — Bus Kahan Hai? (real-time bus tracker)
+- Google AI Seekho 2026 — Ustaad.ai (multi-agent tutoring platform)
+- Panaversity Hackathon — Personal AI Employee (Digital FTE)
+- Certifications: Anthropic Claude, Hugging Face, Microsoft/LinkedIn, Cisco/ITU-DTC, Huawei HCIA-IoT, AI Python for Beginners (DeepLearning.AI), React.js (HackerRank), Introduction to TypeScript (Great Learning)
+
+## Contact
+
+- Email: shirazkk8@gmail.com
+- Location: Karachi, Pakistan
