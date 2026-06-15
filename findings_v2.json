@@ -1,0 +1,1481 @@
+{
+  "url": "https://shirazabubakar.vercel.app",
+  "scores": {
+    "overall": 72,
+    "categories": {
+      "security": 90,
+      "social": 77,
+      "robots": 80,
+      "article": 75,
+      "broken_links": 85,
+      "internal_links": 60,
+      "redirects": 100,
+      "llms_txt": 90,
+      "pagespeed": 0,
+      "onpage": 90,
+      "readability": 36,
+      "entity": 0,
+      "link_profile": 55,
+      "hreflang": 0,
+      "duplicate_content": 100
+    },
+    "weights": {
+      "security": 8,
+      "social": 5,
+      "robots": 8,
+      "broken_links": 10,
+      "internal_links": 8,
+      "redirects": 3,
+      "llms_txt": 5,
+      "pagespeed": 13,
+      "onpage": 10,
+      "readability": 8,
+      "entity": 5,
+      "link_profile": 7,
+      "hreflang": 5,
+      "duplicate_content": 5
+    },
+    "scoring_version": 1
+  },
+  "data": {
+    "url": "https://shirazabubakar.vercel.app",
+    "domain": "shirazabubakar.vercel.app",
+    "timestamp": "2026-06-16T03:57:43.136209",
+    "sections": {
+      "robots": {
+        "url": "https://shirazabubakar.vercel.app/robots.txt",
+        "status": 200,
+        "user_agents": {
+          "*": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          }
+        },
+        "sitemaps": [
+          "https://shirazabubakar.vercel.app/sitemap.xml"
+        ],
+        "crawl_delays": {},
+        "ai_crawler_status": {
+          "GPTBot": "not managed (inherits * rules)",
+          "ChatGPT-User": "not managed (inherits * rules)",
+          "ClaudeBot": "not managed (inherits * rules)",
+          "PerplexityBot": "not managed (inherits * rules)",
+          "Google-Extended": "not managed (inherits * rules)",
+          "Applebot-Extended": "not managed (inherits * rules)",
+          "Bytespider": "not managed (inherits * rules)",
+          "CCBot": "not managed (inherits * rules)",
+          "anthropic-ai": "not managed (inherits * rules)",
+          "FacebookBot": "not managed (inherits * rules)",
+          "Amazonbot": "not managed (inherits * rules)"
+        },
+        "issues": [
+          "\u26a0\ufe0f 11 AI crawlers not explicitly managed: GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended"
+        ],
+        "error": null
+      },
+      "security": {
+        "url": "https://shirazabubakar.vercel.app",
+        "score": 90,
+        "https": true,
+        "headers_present": {
+          "HSTS (Strict-Transport-Security)": "max-age=63072000; includeSubDomains; preload",
+          "Content-Security-Policy (CSP)": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://shirazabubakar.vercel.app; font-src 'self' data:;",
+          "X-Frame-Options": "DENY",
+          "X-Content-Type-Options": "nosniff",
+          "Referrer-Policy": "strict-origin-when-cross-origin"
+        },
+        "headers_missing": {
+          "Permissions-Policy": "Controls browser feature access (camera, microphone, geolocation)."
+        },
+        "header_values": {
+          "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://shirazabubakar.vercel.app; font-src 'self' data:;",
+          "x-frame-options": "DENY",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        },
+        "issues": [
+          "\u26a0\ufe0f 1 security header(s) missing"
+        ],
+        "recommendations": [
+          "Permissions-Policy: Add header: Permissions-Policy: camera=(), microphone=(), geolocation=()"
+        ],
+        "error": null
+      },
+      "social": {
+        "url": "https://shirazabubakar.vercel.app",
+        "score": 77,
+        "og_tags": {
+          "og:title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+          "og:description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+          "og:url": "https://shirazabubakar.vercel.app",
+          "og:site_name": "Shiraz Ali Portfolio",
+          "og:image": "https://shirazabubakar.vercel.app/profile.png",
+          "og:image:width": "800",
+          "og:image:height": "600",
+          "og:type": "website"
+        },
+        "twitter_tags": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+          "twitter:description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+          "twitter:image": "https://shirazabubakar.vercel.app/profile.png"
+        },
+        "og_present": [
+          "og:title",
+          "og:description",
+          "og:image",
+          "og:url",
+          "og:type",
+          "og:site_name"
+        ],
+        "og_missing": [],
+        "twitter_present": [
+          "twitter:card",
+          "twitter:title",
+          "twitter:description",
+          "twitter:image"
+        ],
+        "twitter_missing": [],
+        "issues": [],
+        "recommendations": [],
+        "preview": {
+          "title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+          "description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+          "image": "https://shirazabubakar.vercel.app/profile.png",
+          "site_name": "Shiraz Ali Portfolio"
+        },
+        "error": null
+      },
+      "redirects": {
+        "url": "https://shirazabubakar.vercel.app",
+        "final_url": "https://shirazabubakar.vercel.app",
+        "chain": [
+          {
+            "step": 1,
+            "url": "https://shirazabubakar.vercel.app",
+            "status": 200,
+            "time_ms": 2467,
+            "final": true
+          }
+        ],
+        "total_hops": 0,
+        "total_time_ms": 2467,
+        "has_loop": false,
+        "has_mixed_protocol": false,
+        "issues": [],
+        "error": null
+      },
+      "llms_txt": {
+        "url": "https://shirazabubakar.vercel.app/llms.txt",
+        "full_url": "https://shirazabubakar.vercel.app/llms-full.txt",
+        "exists": true,
+        "full_exists": false,
+        "status": 200,
+        "full_status": 404,
+        "parsed": {
+          "title": "Shiraz Ali",
+          "description": "Shiraz Ali is a Full Stack Developer and Agentic AI Engineer based in Karachi, Pakistan, building production-grade web applications and multi-agent AI systems.",
+          "sections": [
+            {
+              "name": "Links",
+              "links": [
+                {
+                  "title": "Portfolio",
+                  "url": "https://shirazabubakar.vercel.app",
+                  "description": "Personal portfolio website"
+                },
+                {
+                  "title": "GitHub",
+                  "url": "https://github.com/shirazkk",
+                  "description": "Open-source projects and code"
+                },
+                {
+                  "title": "LinkedIn",
+                  "url": "https://linkedin.com/in/shirazali8",
+                  "description": "Professional profile and experience"
+                },
+                {
+                  "title": "Agency",
+                  "url": "https://ziybex.com",
+                  "description": "Ziybex creative marketing & web agency"
+                }
+              ]
+            },
+            {
+              "name": "Skills",
+              "links": []
+            },
+            {
+              "name": "Experience",
+              "links": []
+            },
+            {
+              "name": "Achievements",
+              "links": []
+            },
+            {
+              "name": "Contact",
+              "links": []
+            }
+          ],
+          "links": [
+            {
+              "title": "Portfolio",
+              "url": "https://shirazabubakar.vercel.app",
+              "description": "Personal portfolio website"
+            },
+            {
+              "title": "GitHub",
+              "url": "https://github.com/shirazkk",
+              "description": "Open-source projects and code"
+            },
+            {
+              "title": "LinkedIn",
+              "url": "https://linkedin.com/in/shirazali8",
+              "description": "Professional profile and experience"
+            },
+            {
+              "title": "Agency",
+              "url": "https://ziybex.com",
+              "description": "Ziybex creative marketing & web agency"
+            }
+          ]
+        },
+        "quality": {
+          "score": 90,
+          "issues": [],
+          "suggestions": []
+        },
+        "error": null
+      },
+      "broken_links": {
+        "page_url": "https://shirazabubakar.vercel.app",
+        "total_links": 20,
+        "checked": 20,
+        "broken": [
+          {
+            "url": "https://www.linkedin.com/in/shirazali8",
+            "anchor_text": "LinkedIn",
+            "is_internal": false,
+            "status": 999,
+            "error": null,
+            "redirect": null,
+            "response_time_ms": 2709
+          }
+        ],
+        "redirected": [
+          {
+            "url": "https://shirazkk.github.io/Physicial_Ai_Book_Hackathon_1",
+            "anchor_text": "[no text]",
+            "is_internal": false,
+            "status": 200,
+            "error": null,
+            "redirect": {
+              "from": "https://shirazkk.github.io/Physicial_Ai_Book_Hackathon_1",
+              "to": "https://shirazkk.github.io/Physicial_Ai_Book_Hackathon_1/",
+              "hops": 1,
+              "codes": [
+                301
+              ]
+            },
+            "response_time_ms": 1093
+          }
+        ],
+        "timeout": [],
+        "healthy": 18,
+        "summary": {
+          "total": 20,
+          "healthy": 18,
+          "broken": 1,
+          "redirected": 1,
+          "timeout": 0
+        },
+        "issues": [
+          "\ud83d\udd34 1 broken link(s) found"
+        ],
+        "error": null
+      },
+      "internal_links": {
+        "start_url": "https://shirazabubakar.vercel.app",
+        "domain": "shirazabubakar.vercel.app",
+        "pages_crawled": 7,
+        "total_internal_links": 29,
+        "unique_pages_found": 16,
+        "max_depth_reached": 1,
+        "pages": {
+          "https://shirazabubakar.vercel.app": {
+            "outgoing_links": 6,
+            "incoming_links": 0
+          },
+          "https://shirazabubakar.vercel.app/": {
+            "outgoing_links": 6,
+            "incoming_links": 3
+          },
+          "https://shirazabubakar.vercel.app/blog": {
+            "outgoing_links": 14,
+            "incoming_links": 5
+          },
+          "https://shirazabubakar.vercel.app/new_latest_resume.pdf": {
+            "outgoing_links": 0,
+            "incoming_links": 2
+          },
+          "https://shirazabubakar.vercel.app/blog/integrating-akamai-unified-agentic-security-framework-nextjs": {
+            "outgoing_links": 1,
+            "incoming_links": 3
+          },
+          "https://shirazabubakar.vercel.app/blog/asentum-euler-upgrade-nextjs-agentic-workflows": {
+            "outgoing_links": 1,
+            "incoming_links": 3
+          },
+          "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-framework-tutorial-nextjs": {
+            "outgoing_links": 1,
+            "incoming_links": 3
+          }
+        },
+        "anchor_texts": {
+          "01Agentic AI/8 min readIntegrating Asentum's Euler Upgrade with Next.js for Dece": 3,
+          "02Full Stack/8 min readNokia NSP Agentic AI Framework Tutorial: Real-Time Networ": 3,
+          "03Agentic AI/8 min readIntegrating Akamai\u2019s Unified Agentic Security Framework w": 3,
+          "Blog": 3,
+          "SA": 2,
+          "Resume": 2,
+          "Read all posts": 2,
+          "Home": 1,
+          "04Agentic AI/8 min readIntegrating the New Nokia NSP Agentic AI Framework for Re": 1,
+          "05Agentic AI/8 min readIntegrating Akamai Bot & Agent Control with Next.js for S": 1,
+          "06Full Stack/8 min readOptimizing Nokia NSP API Integration with Next.js for Age": 1,
+          "07Agentic AI/12 min readHow to Integrate Batta Security Reviews for Secure Agent": 1,
+          "08Full Stack/8 min readMitigating CVE-2026-44575: Securing Next.js App Router Mi": 1,
+          "09Agentic AI/12 min readIntegrating Nokia Network Services Platform Agentic AI w": 1,
+          "010Full Stack/12 min readMigrating to TypeScript 6.0: The Essential Guide to the": 1,
+          "011Agentic AI/12 min readAgentic RAG: Implementing Gemini Enterprise Agent Platf": 1,
+          "012Agentic AI/12 min readBuilding Secure Agentic Workflows with the New MCP-Comp": 1,
+          "013Agentic AI/12 min readBuilding Agentic RAG Workflows with the New Gemini Ente": 1
+        },
+        "link_distribution": {
+          "min": 1,
+          "max": 14,
+          "avg": 4.8
+        },
+        "orphan_candidates": [
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-framework-integration-nextjs",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/integrating-akamai-bot-agent-control-nextjs-secure-agentic-ai",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/optimizing-nokia-nsp-api-integration-with-nextjs",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/secure-agentic-ai-workflows-nextjs-batta",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/mitigating-cve-2026-44575-nextjs-middleware-fix",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-nextjs-integration",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/migrating-to-typescript-6-0-enterprise-guide",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/agentic-rag-gemini-enterprise-vs-mcp",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/secure-agentic-workflows-spanly-mcp-framework",
+            "incoming_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/building-agentic-rag-workflows-gemini-enterprise-agent-platform",
+            "incoming_links": 1
+          }
+        ],
+        "nofollow_links": [],
+        "issues": [
+          "\u26a0\ufe0f 10 potential orphan page(s) (\u22641 internal link pointing to them)",
+          "\u26a0\ufe0f 3 page(s) have fewer than 3 internal links"
+        ],
+        "recommendations": [
+          "Add internal links pointing to orphan pages from related content",
+          "Increase internal linking \u2014 aim for 3-5 relevant links per 1000 words"
+        ],
+        "error": null
+      },
+      "pagespeed": {
+        "url": "https://shirazabubakar.vercel.app",
+        "strategy": "mobile",
+        "performance_score": null,
+        "metrics": {},
+        "opportunities": [],
+        "diagnostics": [],
+        "field_data_available": false,
+        "error": "API error: HTTP 403"
+      },
+      "entity": {
+        "url": "https://shirazabubakar.vercel.app",
+        "entity_name": "Shiraz Ali Portfolio",
+        "entities_in_schema": [],
+        "sameas_analysis": {
+          "found": {},
+          "missing": {
+            "Wikipedia": {
+              "domain": "wikipedia.org",
+              "priority": "Critical",
+              "kg_signal": "Primary"
+            },
+            "Wikidata": {
+              "domain": "wikidata.org",
+              "priority": "Critical",
+              "kg_signal": "Primary"
+            },
+            "LinkedIn": {
+              "domain": "linkedin.com",
+              "priority": "High",
+              "kg_signal": "Strong"
+            },
+            "Twitter/X": {
+              "domain": "x.com",
+              "priority": "High",
+              "kg_signal": "Strong"
+            }
+          },
+          "issues": [],
+          "total_found": 0,
+          "total_missing_critical": 4
+        },
+        "wikidata": {
+          "found": false,
+          "qid": null,
+          "url": null
+        },
+        "wikipedia": {
+          "found": false,
+          "url": null
+        },
+        "google_kg": {
+          "checked": true,
+          "found": false,
+          "result": null
+        },
+        "nap_issues": [],
+        "issues": [
+          {
+            "severity": "Critical",
+            "area": "Schema",
+            "finding": "No Organization/Person entity found in JSON-LD.",
+            "fix": "Add Organization or Person schema with name, url, logo, and sameAs properties."
+          },
+          {
+            "severity": "Info",
+            "area": "Wikidata",
+            "finding": "No Wikidata entry found for 'Shiraz Ali Portfolio'.",
+            "fix": "If the entity meets Wikidata notability guidelines, create or improve an item with accurate third-party references. Do not create one solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "Wikipedia",
+            "finding": "No Wikipedia article found for 'Shiraz Ali Portfolio'.",
+            "fix": "Only pursue Wikipedia if the entity meets independent notability standards. Otherwise, strengthen official schema, sameAs profiles, citations, and About/Contact signals."
+          },
+          {
+            "severity": "Info",
+            "area": "Google Knowledge Graph",
+            "finding": "No Google Knowledge Graph Search API match found for 'Shiraz Ali Portfolio'.",
+            "fix": "Improve entity consistency across official site schema, sameAs profiles, authoritative mentions, and organization/person pages."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Wikipedia (Primary KG signal).",
+            "fix": "Add the existing official 'wikipedia.org' URL to sameAs; do not create this profile solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Wikidata (Primary KG signal).",
+            "fix": "Add the existing official 'wikidata.org' URL to sameAs; do not create this profile solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to LinkedIn (Strong KG signal).",
+            "fix": "Add 'linkedin.com' profile URL to sameAs array in your entity schema."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Twitter/X (Strong KG signal).",
+            "fix": "Add 'x.com' profile URL to sameAs array in your entity schema."
+          }
+        ],
+        "summary": {
+          "entities_found": 0,
+          "sameas_count": 0,
+          "sameas_missing_critical": 4,
+          "wikidata_found": false,
+          "wikipedia_found": false,
+          "google_kg_checked": true,
+          "google_kg_found": false,
+          "total_issues": 8
+        }
+      },
+      "link_profile": {
+        "pages_crawled": 15,
+        "total_internal_links": 33,
+        "total_external_links": 15,
+        "unique_internal_targets": 16,
+        "unique_external_domains": 7,
+        "avg_internal_links_per_page": 2.2,
+        "orphan_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "dead_end_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "top_linked_pages": [
+          {
+            "url": "https://shirazabubakar.vercel.app/blog",
+            "inbound_links": 14
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/",
+            "inbound_links": 2
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/asentum-euler-upgrade-nextjs-agentic-workflows",
+            "inbound_links": 2
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-framework-tutorial-nextjs",
+            "inbound_links": 2
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/integrating-akamai-unified-agentic-security-framework-nextjs",
+            "inbound_links": 2
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/new_latest_resume.pdf",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-framework-integration-nextjs",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/integrating-akamai-bot-agent-control-nextjs-secure-agentic-ai",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/optimizing-nokia-nsp-api-integration-with-nextjs",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/secure-agentic-ai-workflows-nextjs-batta",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/mitigating-cve-2026-44575-nextjs-middleware-fix",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-nextjs-integration",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/migrating-to-typescript-6-0-enterprise-guide",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/agentic-rag-gemini-enterprise-vs-mcp",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/secure-agentic-workflows-spanly-mcp-framework",
+            "inbound_links": 1
+          },
+          {
+            "url": "https://shirazabubakar.vercel.app/blog/building-agentic-rag-workflows-gemini-enterprise-agent-platform",
+            "inbound_links": 1
+          }
+        ],
+        "top_external_domains": [
+          {
+            "domain": "github.com",
+            "links": 8
+          },
+          {
+            "domain": "ziybex.com",
+            "links": 1
+          },
+          {
+            "domain": "ustad-ai-service-373424250185.us-central1.run.app",
+            "links": 1
+          },
+          {
+            "domain": "temporary-file-sharing-vault.vercel.app",
+            "links": 1
+          },
+          {
+            "domain": "shirazkk.github.io",
+            "links": 1
+          },
+          {
+            "domain": "www.linkedin.com",
+            "links": 1
+          },
+          {
+            "domain": "x.com",
+            "links": 1
+          }
+        ],
+        "issues": [
+          {
+            "type": "low_internal_linking",
+            "severity": "High",
+            "finding": "Average internal links per page is only 2.2 (target: 5-10).",
+            "fix": "Increase internal linking by adding contextual links within content."
+          }
+        ],
+        "site_url": "https://shirazabubakar.vercel.app"
+      },
+      "hreflang": {
+        "url": "https://shirazabubakar.vercel.app/",
+        "implementation_method": "none",
+        "hreflang_tags_found": 0,
+        "tags": [],
+        "sitemap": {
+          "found": false,
+          "url": "https://shirazabubakar.vercel.app/sitemap.xml",
+          "has_xhtml_namespace": false,
+          "language_variants_found": [],
+          "note": "No hreflang found in sitemap."
+        },
+        "checks": {
+          "hreflang_present": {
+            "passed": false,
+            "severity": "Info",
+            "finding": "No hreflang tags found (HTML, HTTP headers, or sitemap).",
+            "fix": "If this is a single-language site, hreflang is not needed. For multi-language sites, implement hreflang via HTML link tags or sitemap."
+          }
+        },
+        "language_code_issues": [],
+        "return_tag_checks": [],
+        "summary": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "passed": 0
+        }
+      },
+      "duplicate_content": {
+        "pages_analyzed": 15,
+        "exact_duplicates": [],
+        "near_duplicates": [],
+        "thin_content": [],
+        "summary": {
+          "exact_duplicate_groups": 0,
+          "near_duplicate_pairs": 0,
+          "thin_pages": 0,
+          "avg_word_count": 974
+        }
+      },
+      "onpage": {
+        "title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+        "meta_description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+        "meta_robots": null,
+        "x_robots_tag": null,
+        "canonical": null,
+        "lang": "en",
+        "charset": "utf-8",
+        "viewport": "width=device-width, initial-scale=1",
+        "favicon": "https://shirazabubakar.vercel.app/favicon-96x96.png",
+        "h1": [
+          "Shiraz Ali"
+        ],
+        "h2": [
+          "Full Stack Developer | Agentic AI Developer",
+          "AboutMe",
+          "Building intelligent futures, one agent at a time.",
+          "TechArsenal",
+          "SelectedWorks",
+          "TheJourney",
+          "Blog",
+          "AcademicFoundation",
+          "Credentials",
+          "Contact"
+        ],
+        "h3": [
+          "Web Development",
+          "Agentic AI",
+          "Backend & Data",
+          "Ziybex",
+          "Jarvis Guardian AI",
+          "AI Lead Generator",
+          "PaisaLog",
+          "Personal AI Employee",
+          "Ustad.ai",
+          "DarkVault",
+          "Physical AI Book - Hackathon",
+          "Founder",
+          "Frontend Development Intern",
+          "Integrating Asentum's Euler Upgrade with Next.js for Decentralized Agentic Workflows",
+          "Nokia NSP Agentic AI Framework Tutorial: Real-Time Network Visualization in Next.js",
+          "Integrating Akamai\u2019s Unified Agentic Security Framework with Next.js",
+          "Intermediate in Engineering",
+          "Bachelor's in Artificial Intelligence",
+          "Cloud Native Agentic AI Engineering",
+          "Prompt Design in Vertex AI Skill Badge",
+          "Build a Website on Google Cloud Skill Badge",
+          "Claude Code in Action",
+          "OpenClaw Mastery for Everyone",
+          "Claude Code 101",
+          "Agentic AI Professional Level 2 Developer",
+          "Agentic AI Level 1 Developer",
+          "Docker Fundamentals | Crash Course",
+          "Introduction to Model Context Protocol",
+          "Fundamental AI Concepts",
+          "Basic of Python",
+          "React Js",
+          "Introduction To TypeScript",
+          "Fundamental AI Concept",
+          "AI Python"
+        ],
+        "h4": [
+          "CodePulse Innovations - Self-employed",
+          "DevelopersHub Corporation"
+        ],
+        "h5": [],
+        "h6": [],
+        "images": [
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fgoogle.png&w=3840&q=75",
+            "alt": "Google",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": null
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fgoogle.png&w=3840&q=75",
+            "alt": "Google",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": null
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": null
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fleveluplabs.png&w=3840&q=75",
+            "alt": "LevelUp Labs",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fpiaic.jpeg&w=3840&q=75",
+            "alt": "PIAIC",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fpiaic.jpeg&w=3840&q=75",
+            "alt": "PIAIC",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fudemy.png&w=3840&q=75",
+            "alt": "Udemy",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Funiathena.jpeg&w=3840&q=75",
+            "alt": "UniAthena",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Funiathena.jpeg&w=3840&q=75",
+            "alt": "UniAthena",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fhackerrank.jpeg&w=3840&q=75",
+            "alt": "HackerRank",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fgreat_learning.jpeg&w=3840&q=75",
+            "alt": "Great Learning",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fmicrosoft.jpeg&w=3840&q=75",
+            "alt": "Microsoft",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "https://shirazabubakar.vercel.app/_next/image?url=%2Fdeeplearningai.jpeg&w=3840&q=75",
+            "alt": "DeepLearning.AI",
+            "width": "32",
+            "height": "32",
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          }
+        ],
+        "links": {
+          "internal": [
+            {
+              "href": "https://shirazabubakar.vercel.app/",
+              "text": "SA",
+              "rel": []
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/new_latest_resume.pdf",
+              "text": "Resume",
+              "rel": []
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/blog",
+              "text": "Read all posts",
+              "rel": []
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/blog/asentum-euler-upgrade-nextjs-agentic-workflows",
+              "text": "01Agentic AI/8 min readIntegrating Asentum's Euler Upgrade with Next.js for Decentralized Agentic Wo",
+              "rel": []
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/blog/nokia-nsp-agentic-ai-framework-tutorial-nextjs",
+              "text": "02Full Stack/8 min readNokia NSP Agentic AI Framework Tutorial: Real-Time Network Visualization in N",
+              "rel": []
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/blog/integrating-akamai-unified-agentic-security-framework-nextjs",
+              "text": "03Agentic AI/8 min readIntegrating Akamai\u2019s Unified Agentic Security Framework with Next.jsLearn how",
+              "rel": []
+            }
+          ],
+          "external": [
+            {
+              "href": "https://ziybex.com",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/Jarvis-Guardian-AI",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/ai-lead-generator",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/paisalog",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/Personal-AI-Employee",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://ustad-ai-service-373424250185.us-central1.run.app/",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/Ustad.ai",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://temporary-file-sharing-vault.vercel.app",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/Temporary-File-Sharing-Vault",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://shirazkk.github.io/Physicial_Ai_Book_Hackathon_1",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk/Physicial_Ai_Book_Hackathon_1",
+              "text": "",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://github.com/shirazkk",
+              "text": "Explore All Repositories",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "mailto:shirazkk8@gmail.com",
+              "text": "shirazkk8@gmail.com",
+              "rel": []
+            },
+            {
+              "href": "https://github.com/shirazkk",
+              "text": "GitHub",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://www.linkedin.com/in/shirazali8",
+              "text": "LinkedIn",
+              "rel": [
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://x.com/KkShiraz",
+              "text": "Twitter",
+              "rel": [
+                "noreferrer"
+              ]
+            }
+          ]
+        },
+        "pagination": {
+          "prev": null,
+          "next": null
+        },
+        "resource_hints": {
+          "preload": [
+            {
+              "href": "https://shirazabubakar.vercel.app/_next/static/media/a343f882a40d2cc9-s.p.0kho-wj7-y-w1.woff2",
+              "as": "font",
+              "type": "font/woff2",
+              "crossorigin": ""
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/_next/static/media/fabcf92ba1ccea36-s.p.0lwj123ije5i..woff2",
+              "as": "font",
+              "type": "font/woff2",
+              "crossorigin": ""
+            },
+            {
+              "href": "https://shirazabubakar.vercel.app/_next/static/chunks/0k18m_9uabij6.js",
+              "as": "script",
+              "type": null,
+              "crossorigin": null
+            }
+          ],
+          "preconnect": [],
+          "dns-prefetch": [],
+          "prefetch": [],
+          "prerender": []
+        },
+        "schema": [
+          {
+            "@type": "ProfilePage",
+            "@types": [
+              "ProfilePage"
+            ],
+            "@id": null,
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": false,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Shiraz Ali",
+                "jobTitle": "Full Stack Developer & Agentic AI Engineer",
+                "url": "https://shirazabubakar.vercel.app",
+                "image": "https://shirazabubakar.vercel.app/profile.png",
+                "sameAs": [
+                  "https://github.com/shirazkk",
+                  "https://www.linkedin.com/in/shirazali8",
+                  "https://x.com/KkShiraz"
+                ],
+                "description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressRegion": "Sindh",
+                  "addressCountry": "PK"
+                }
+              }
+            }
+          }
+        ],
+        "open_graph": {
+          "og:title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+          "og:description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+          "og:url": "https://shirazabubakar.vercel.app",
+          "og:site_name": "Shiraz Ali Portfolio",
+          "og:image": "https://shirazabubakar.vercel.app/profile.png",
+          "og:image:width": "800",
+          "og:image:height": "600",
+          "og:type": "website"
+        },
+        "twitter_card": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+          "twitter:description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+          "twitter:image": "https://shirazabubakar.vercel.app/profile.png"
+        },
+        "word_count": 1100,
+        "hreflang": []
+      },
+      "readability": {
+        "word_count": 608,
+        "sentence_count": 27,
+        "paragraph_count": 84,
+        "syllable_count": 1167,
+        "avg_sentence_length": 22.5,
+        "avg_paragraph_length": 0.3,
+        "avg_syllables_per_word": 1.92,
+        "flesch_reading_ease": 21.6,
+        "flesch_kincaid_grade": 15.8,
+        "reading_level": "Very Difficult (college)",
+        "estimated_reading_time_min": 3.0,
+        "complex_words": 155,
+        "complex_word_pct": 25.5,
+        "issues": [
+          "\u26a0\ufe0f Content is difficult to read (Flesch: 21.6) \u2014 may reduce engagement",
+          "\u26a0\ufe0f 25.5% complex words (3+ syllables) \u2014 consider simplifying"
+        ],
+        "recommendations": [
+          "Simplify vocabulary and shorten sentences",
+          "Rewrite the flagged long sentences below using the suggested replacements."
+        ],
+        "sentence_rewrites": [
+          {
+            "current": "Homepage hero intro block is broad and hard to scan.",
+            "suggested": "Use a 2-3 sentence hero: who you help, what users can do here, and where to start. Example: \"Learn practical ethical hacking with step-by-step guides. Start with Wi-Fi security, Active Directory, or malware analysis using the tracks below.\"",
+            "current_word_count": "template",
+            "target_word_count": "40-60 total (split into 2-3 sentences)"
+          },
+          {
+            "current": "Section descriptions mix too many topics in one long paragraph.",
+            "suggested": "Replace with short blurbs per section (1 sentence each) and add a clear CTA link: \"Start Wi-Fi Security\", \"Explore AD Attack Paths\", \"View Red-Team Cheat Sheets\".",
+            "current_word_count": "template",
+            "target_word_count": "12-20 words per blurb"
+          }
+        ]
+      },
+      "article": {
+        "url": "https://shirazabubakar.vercel.app",
+        "cms_detected": "generic",
+        "title": "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+        "meta_description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+        "og_description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+        "author": "",
+        "publish_date": "",
+        "labels": [],
+        "headings": {
+          "h1": [
+            "Shiraz Ali"
+          ],
+          "h2": [
+            "Full Stack Developer | Agentic AI Developer",
+            "AboutMe",
+            "Building intelligent futures, one agent at a time.",
+            "TechArsenal",
+            "SelectedWorks",
+            "TheJourney",
+            "Blog",
+            "AcademicFoundation",
+            "Credentials",
+            "Contact"
+          ],
+          "h3": [
+            "Web Development",
+            "Agentic AI",
+            "Backend & Data",
+            "Ziybex",
+            "Jarvis Guardian AI",
+            "AI Lead Generator",
+            "PaisaLog",
+            "Personal AI Employee",
+            "Ustad.ai",
+            "DarkVault",
+            "Physical AI Book - Hackathon",
+            "Founder",
+            "Frontend Development Intern",
+            "Integrating Asentum's Euler Upgrade with Next.js for Decentralized Agentic Workflows",
+            "Nokia NSP Agentic AI Framework Tutorial: Real-Time Network Visualization in Next.js",
+            "Integrating Akamai\u2019s Unified Agentic Security Framework with Next.js",
+            "Intermediate in Engineering",
+            "Bachelor's in Artificial Intelligence",
+            "Cloud Native Agentic AI Engineering",
+            "Prompt Design in Vertex AI Skill Badge",
+            "Build a Website on Google Cloud Skill Badge",
+            "Claude Code in Action",
+            "OpenClaw Mastery for Everyone",
+            "Claude Code 101",
+            "Agentic AI Professional Level 2 Developer",
+            "Agentic AI Level 1 Developer",
+            "Docker Fundamentals | Crash Course",
+            "Introduction to Model Context Protocol",
+            "Fundamental AI Concepts",
+            "Basic of Python",
+            "React Js",
+            "Introduction To TypeScript",
+            "Fundamental AI Concept",
+            "AI Python"
+          ]
+        },
+        "paragraphs": [
+          "I design cinematic web experiences and build autonomous AI systems that turn product ideas into working software.",
+          "Based in Karachi, Sindh, Pakistan . Building production web apps, AI agents, and polished product interfaces.",
+          "I am a Full Stack Web Developer and Agentic AI Developer based in Karachi, Pakistan. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS, and I design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. From crafting pixel-perfect interfaces to architecting multi-agent AI pipelines, I work across the full spectrum of modern product development. As the founder of CodePulse Innovations, I turned that vision into reality by building FolioGenerator.com, an AI-driven platform that generates professional portfolio websites from resumes instantly.",
+          "From autonomous AI agents to cinematic frontends, these projects represent my obsession with performance, intelligence, and high-end design.",
+          "Cutting-edge creative marketing agency platform specializing in web design, branding, and SEO solutions.",
+          "Always-on AI guardian assistant for Windows using voice and face recognition, and continuous system monitoring.",
+          "Autonomous, end-to-end AI system that identifies businesses with weak online presence, scores their opportunity value, and generates hyper-personalized cold outreach emails \u2014 with a real-time Next.js dashboard and one-click email delivery via Resend.",
+          "Collaborative household finance tracker with real-time expense syncing, transaction categorization, and multi-member household management \u2014 built on Supabase with Row Level Security.",
+          "A local-first, file-based AI assistant powered by Claude Code CLI, Obsidian, and Gmail polling.",
+          "Culturally-rooted, multi-agent AI tutoring platform for Pakistani students in Hinglish with board-specific syllabus.",
+          "Secure, anonymous, and PWA-ready file-sharing application with a minimalist hacker-themed interface.",
+          "AI-powered book built with Docusaurus, Qdrant vector search, and Google Gen-AI. Developed using Spec-Driven Development.",
+          "Practical notes on agentic systems, AI product workflows, and the engineering choices behind modern full-stack AI apps.",
+          "Learn how to bridge Next.js with Asentum's Euler upgrade to build robust decentralized agentic AI workflows. This guide covers integration steps and architecture for the new Operator app.",
+          "Learn how to integrate the Nokia NSP agentic AI framework for real-time network visualization. Build robust monitoring dashboards using Next.js and secure data practices.",
+          "Learn how to protect your applications using the Akamai agentic security framework. We cover practical implementation steps for securing agentic AI traffic in Next.js.",
+          "Have an AI product, agent workflow, or cinematic web experience in mind? Send the basics and I will reply with the next practical step."
+        ],
+        "images": [
+          {
+            "src": "/_next/image?url=%2Fgoogle.png&w=3840&q=75",
+            "alt": "Google",
+            "width": "32",
+            "height": "32",
+            "loading": ""
+          },
+          {
+            "src": "/_next/image?url=%2Fgoogle.png&w=3840&q=75",
+            "alt": "Google",
+            "width": "32",
+            "height": "32",
+            "loading": ""
+          },
+          {
+            "src": "/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "loading": ""
+          },
+          {
+            "src": "/_next/image?url=%2Fleveluplabs.png&w=3840&q=75",
+            "alt": "LevelUp Labs",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fpiaic.jpeg&w=3840&q=75",
+            "alt": "PIAIC",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fpiaic.jpeg&w=3840&q=75",
+            "alt": "PIAIC",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fudemy.png&w=3840&q=75",
+            "alt": "Udemy",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fanthropic.png&w=3840&q=75",
+            "alt": "Anthropic",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Funiathena.jpeg&w=3840&q=75",
+            "alt": "UniAthena",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Funiathena.jpeg&w=3840&q=75",
+            "alt": "UniAthena",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fhackerrank.jpeg&w=3840&q=75",
+            "alt": "HackerRank",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fgreat_learning.jpeg&w=3840&q=75",
+            "alt": "Great Learning",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fmicrosoft.jpeg&w=3840&q=75",
+            "alt": "Microsoft",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          },
+          {
+            "src": "/_next/image?url=%2Fdeeplearningai.jpeg&w=3840&q=75",
+            "alt": "DeepLearning.AI",
+            "width": "32",
+            "height": "32",
+            "loading": "lazy"
+          }
+        ],
+        "structured_data": [
+          {
+            "@type": "ProfilePage",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Shiraz Ali",
+                "jobTitle": "Full Stack Developer & Agentic AI Engineer",
+                "url": "https://shirazabubakar.vercel.app",
+                "image": "https://shirazabubakar.vercel.app/profile.png",
+                "sameAs": [
+                  "https://github.com/shirazkk",
+                  "https://www.linkedin.com/in/shirazali8",
+                  "https://x.com/KkShiraz"
+                ],
+                "description": "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressRegion": "Sindh",
+                  "addressCountry": "PK"
+                }
+              }
+            }
+          }
+        ],
+        "readability": {
+          "flesch_reading_ease": 16.1,
+          "fkgl": 14.7,
+          "grade_label": "Difficult (technical / specialist audience)",
+          "word_count": 550,
+          "sentence_count": 37,
+          "avg_sentence_length": 14.9,
+          "avg_syllables_per_word": 2.08
+        },
+        "target_keyword": "developer agentic developer",
+        "extracted_keywords": [
+          "developer agentic developer",
+          "asentum euler upgrade",
+          "decentralized agentic workflows",
+          "nokia nsp agentic",
+          "nsp agentic framework",
+          "real time network",
+          "time network visualization",
+          "agentic security framework",
+          "full stack",
+          "claude code",
+          "skill badge",
+          "level developer"
+        ],
+        "related_keywords": [
+          "developer agents",
+          "developer agent definition",
+          "agentic software developer",
+          "asentum euler upgrade",
+          "decentralized agentic workflows",
+          "nokia nsp agentic",
+          "nsp agentic framework",
+          "real time network",
+          "time network visualization",
+          "agentic security framework",
+          "full stack",
+          "claude code",
+          "skill badge",
+          "level developer"
+        ],
+        "seo_issues": [
+          {
+            "severity": "Warning",
+            "area": "Content",
+            "finding": "Content may be thin for a blog post (550 words).",
+            "fix": "Aim for 1,500+ words of substantive, unique content."
+          },
+          {
+            "severity": "Warning",
+            "area": "E-E-A-T",
+            "finding": "No author attribution detected.",
+            "fix": "Add a visible author byline with credentials. Critical post-Dec 2025 E-E-A-T update."
+          },
+          {
+            "severity": "Info",
+            "area": "Freshness",
+            "finding": "No publish date detected in markup.",
+            "fix": "Add visible publish/update date and datePublished in Article schema."
+          },
+          {
+            "severity": "Info",
+            "area": "Readability",
+            "finding": "Content is very difficult to read (Flesch score: 16.1).",
+            "fix": "Simplify sentences. Aim for Flesch score \u2265 50 for broader audience reach."
+          }
+        ]
+      }
+    },
+    "environment": {
+      "primary": "Next.js",
+      "runtime": "JavaScript Framework",
+      "confidence": "medium",
+      "signals": [
+        "Next.js runtime/build markers detected"
+      ],
+      "alternatives": []
+    },
+    "environment_fixes": [
+      {
+        "severity": "warning",
+        "title": "1 security headers missing",
+        "reason": "Missing headers reduce trust and can expose the site to browser/security risks.",
+        "fix": "Set security headers in `next.config.js` `headers()` or at your edge/CDN."
+      },
+      {
+        "severity": "warning",
+        "title": "1 broken links detected",
+        "reason": "Broken internal links hurt crawl flow and user trust.",
+        "fix": "Fix links in route components and content source files; validate with link checks in CI."
+      },
+      {
+        "severity": "info",
+        "title": "Performance measurement incomplete",
+        "reason": "PageSpeed API returned an error, so CWV recommendations are less reliable.",
+        "fix": "Set `PAGESPEED_API_KEY` in your environment or `.env` file (see `.env.example`), then rerun. The CLI also accepts `--api-key`. Prioritize LCP/INP/CLS fixes from that output."
+      },
+      {
+        "severity": "warning",
+        "title": "Content readability is difficult",
+        "reason": "Long, complex text can reduce engagement and comprehension.",
+        "fix": "Rewrite key sections with shorter sentences (15-20 words), shorter paragraphs (2-4 sentences), and clearer subheadings."
+      }
+    ]
+  }
+}

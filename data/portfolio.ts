@@ -17,7 +17,7 @@ export const portfolioData = {
   meta: {
     title: "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
     description:
-      "Portfolio of Shiraz Ali: Full Stack Developer specializing in React, Next.js, and Agentic AI systems powered by OpenAI, CrewAI, LangChain, and Sanity CMS.",
+      "Shiraz Ali, Full Stack Developer & Agentic AI Engineer. Building high-performance Next.js apps, cinematic 3D experiences, and autonomous AI systems.",
   },
   personal: {
     name: "Shiraz Ali",
@@ -66,7 +66,7 @@ export const portfolioData = {
     { value: "2+", label: "Years building" },
   ],
   about: {
-    bio: "I am a Full Stack Web Developer and Agentic AI Developer based in Karachi, Pakistan. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS, and I design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. From crafting pixel-perfect interfaces to architecting multi-agent AI pipelines, I work across the full spectrum of modern product development. As the founder of CodePulse Innovations, I turned that vision into reality by building FolioGenerator.com, an AI-driven platform that generates professional portfolio websites from resumes instantly.",
+    bio: "I'm a Full Stack Web Developer and Agentic AI Developer based in Karachi. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS. I also design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. I work across the full spectrum of modern product development—from crafting pixel-perfect interfaces to architecting multi-agent AI pipelines. My goal is to build software that is both intelligent and highly performant.",
     focus: [
       "Building full-stack web applications with Next.js, React, TypeScript, and Sanity CMS",
       "Designing and deploying Agentic AI systems using OpenAI Agent SDK, CrewAI, and LangChain",
@@ -88,6 +88,30 @@ export const portfolioData = {
     ],
   },
   experience: [
+    {
+      title: "Lead Developer",
+      company: "Ziybex - Creative Marketing & Web Agency",
+      period: "Present",
+      location: "Karachi Division, Sindh, Pakistan",
+      description:
+        "Working as Lead Developer at Ziybex, a creative marketing and web agency, delivering full-stack web solutions and AI-integrated tools for clients including luxury event companies and real estate venues.",
+      achievements: [
+        "Delivering full-stack web solutions for clients including luxury event companies and real estate venues",
+        "Building AI-integrated marketing tools, transactional email systems, and high-converting landing pages",
+        "Managing end-to-end engineering pipelines: architectural design → development → deployment",
+        "Leading technical direction and ensuring scalable, production-grade code across all client projects",
+      ],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "FastAPI",
+        "Python",
+        "Agentic AI",
+        "Docker",
+        "Vercel",
+      ],
+    },
     {
       title: "Founder",
       company: "CodePulse Innovations - Self-employed",
@@ -239,16 +263,6 @@ export const portfolioData = {
       githubUrl: "https://github.com/shirazkk/Ustad.ai",
       liveUrl: "https://ustad-ai-service-373424250185.us-central1.run.app/",
       featured: true,
-    },
-    {
-      title: "DarkVault",
-      description:
-        "Secure, anonymous, and PWA-ready file-sharing application with a minimalist hacker-themed interface.",
-      techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
-      category: "Web App",
-      githubUrl: "https://github.com/shirazkk/Temporary-File-Sharing-Vault",
-      liveUrl: "https://temporary-file-sharing-vault.vercel.app",
-      featured: false,
     },
     {
       title: "Physical AI Book - Hackathon",

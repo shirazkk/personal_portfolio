@@ -72,7 +72,7 @@ const Hero = () => {
             <button
               type="button"
               onClick={scrollToContact}
-              className="inline-flex min-h-12 items-center justify-center gap-3 bg-[#FF6B00] px-7 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.98]"
+              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 bg-[#FF6B00] px-7 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.98]"
             >
               Start a Project
               <ArrowRight size={20} aria-hidden="true" />
@@ -80,14 +80,14 @@ const Hero = () => {
             <button
               type="button"
               onClick={scrollToProjects}
-              className="inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white transition hover:border-[#FF6B00] hover:text-[#FF6B00] active:scale-[0.98]"
+              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white transition hover:border-[#FF6B00] hover:text-[#FF6B00] active:scale-[0.98]"
             >
               View Work
               <ArrowDown size={20} aria-hidden="true" />
             </button>
             <a
-              href="/new_latest_resume.pdf"
-              className="inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white/75 transition hover:border-white hover:text-white"
+              href="/shiraz_cv.docx"
+              className="cursor-pointer  inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white/75 transition hover:border-white hover:text-white"
             >
               Resume
               <Download size={20} aria-hidden="true" />
