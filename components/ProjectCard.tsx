@@ -9,9 +9,8 @@ interface Project {
   description: string;
   techStack: string[];
   category: string;
-  bannerImage: string;
-  githubUrl: string | null;
-  liveUrl: string | null;
+  githubUrl?: string | null;
+  liveUrl?: string | null;
   featured?: boolean;
 }
 
