@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 
-import SectionTitle from "./SectionTitle";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 
@@ -34,7 +33,7 @@ export default async function BlogPreview() {
           <p className="text-[#FF6B00] uppercase tracking-[0.35em] text-xs font-bold mb-4">
             Field notes
           </p>
-          <SectionTitle title="Blog" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Blog</h2>
           <div className="h-2 w-24 bg-[#FF6B00]" />
         </div>
         <div className="max-w-md">
@@ -70,9 +69,9 @@ export default async function BlogPreview() {
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#FF6B00]">
               {post.category} / {post.readTime}
             </p>
-            <h3 className="mb-4 text-3xl font-bebas leading-none transition group-hover:text-[#FF6B00]">
+            <h2 className="mb-4 text-3xl font-bebas leading-none transition group-hover:text-[#FF6B00]">
               {post.title}
-            </h3>
+            </h2>
             <p className="text-white/55 leading-relaxed">{post.excerpt}</p>
           </Link>
         ))}

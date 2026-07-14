@@ -1,7 +1,7 @@
-# GEMINI.md — Shiraz Ali Portfolio
+# GEMINI.md — Shiraz Abubakar Portfolio
 
 ## Project Overview
-This is the personal portfolio of **Shiraz Ali**, a Frontend Developer and Agentic AI Developer. The project is a high-performance, visually rich Next.js web application that showcases his skills in modern web development, 3D web experiences, and AI-driven workflows.
+This is the personal portfolio of **Shiraz Abubakar**, a Full Stack Developer and Agentic AI Developer. The project is a high-performance, visually rich Next.js web application that showcases his skills in modern web development, 3D web experiences, and AI-driven workflows.
 
 - **Primary Goal:** Provide an immersive, interactive showcase of projects, experience, and agentic AI capabilities.
 - **Architecture:** Next.js 16 (App Router) with React 19.

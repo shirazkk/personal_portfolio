@@ -5,8 +5,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-import SectionTitle from './SectionTitle';
-
 const Experience = () => {
   const container = useRef<HTMLDivElement>(null);
 
@@ -43,7 +41,7 @@ const Experience = () => {
     <section id="experience" ref={container} className="py-24 md:py-40 px-6 md:px-12 bg-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col mb-20 text-center items-center">
-          <SectionTitle title="The Journey" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">The Journey</h2>
           <div className="h-2 w-32 bg-[#FF6B00]" />
         </div>
         
@@ -61,8 +59,8 @@ const Experience = () => {
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                   <p className="text-[#FF6B00] font-bebas text-2xl mb-2">{exp.period}</p>
-                  <h3 className="text-4xl md:text-5xl font-bebas mb-2">{exp.title}</h3>
-                  <h4 className="text-xl text-white/50 font-medium mb-4">{exp.company}</h4>
+                  <h2 className="text-4xl md:text-5xl font-bebas mb-2">{exp.title}</h2>
+                  <p className="text-xl text-white/50 font-medium mb-4">{exp.company}</p>
                 </div>
                 
                 {/* Timeline Dot */}

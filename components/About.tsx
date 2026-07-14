@@ -5,8 +5,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import SectionTitle from "./SectionTitle";
-
 const About = () => {
   const container = useRef<HTMLDivElement>(null);
 
@@ -35,14 +33,14 @@ const About = () => {
       ref={container}
       className="py-24 md:py-40 px-6 md:px-12 max-w-7xl mx-auto"
     >
-      <SectionTitle title="About Me" className="mb-20" />
+      <h2 className="text-6xl md:text-8xl font-bebas mb-20">About Me</h2>
 
       <div className="about-content grid md:grid-cols-2 gap-12 md:gap-24 items-start about-content-inner">
         <div className="relative">
           <div className="absolute -left-4 -top-8 h-24 w-24 border-l-2 border-t-2 border-[#FF6B00]/60" />
-          <h2 className="text-4xl md:text-6xl font-bebas leading-tight relative z-10 max-w-xl">
+          <h3 className="text-4xl md:text-6xl font-bebas leading-tight relative z-10 max-w-xl">
             Building intelligent futures, one agent at a time.
-          </h2>
+          </h3>
           <div className="mt-8 flex flex-wrap gap-2">
             {portfolioData.about.interests.slice(0, 4).map((interest) => (
               <span

@@ -1,18 +1,18 @@
 import { MetadataRoute } from 'next';
 import { client } from '@/sanity/lib/client';
-import { SLUGS_QUERY } from '@/sanity/lib/queries';
+import { POSTS_QUERY } from '@/sanity/lib/queries';
 
 export const revalidate = 86400; // Revalidate the sitemap every 24 hours
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://shirazabubakar.vercel.app';
+  const baseUrl = 'https://shirazabubakar.xyz';
 
-  // Fetch all blog post slugs from Sanity
-  const blogSlugs = await client.fetch<string[]>(SLUGS_QUERY);
+  // Fetch all blog posts with dates from Sanity
+  const posts = await client.fetch(POSTS_QUERY);
 
-  const blogPosts = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
+  const blogPosts = posts.map((post: { slug: string; date: string }) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));

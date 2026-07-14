@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, BookOpen } from "lucide-react";
+import { Metadata } from "next";
 
 
 import { client } from "@/sanity/lib/client";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 
-export const metadata = {
-  title: "Blogs | Shiraz Abubakar",
+export const metadata: Metadata = {
+  title: "Blog",
   description:
-    "Articles by Shiraz Ali on Agentic AI, full-stack AI products, and modern web engineering.",
+    "Articles by Shiraz Abubakar on Agentic AI, full-stack AI products, and modern web engineering.",
+  alternates: {
+    canonical: 'https://shirazabubakar.xyz/blog',
+  },
 };
 
 export const revalidate = 3600;

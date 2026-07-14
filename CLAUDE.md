@@ -80,7 +80,7 @@ A standalone Three.js scene (not react-three-fiber) with wireframe icosahedron, 
 - **Color scheme:** dark bg (`#0a0a0a`), accent orange (`#FF6B00`), white text
 - **Typography:** Bebas Neue for headings (uppercase via font), Manrope for body
 - **Section components:** use `<SectionTitle>` + orange underline bar (`h-2 w-24 bg-[#FF6B00]`)
-- **Metadata URLs:** OpenGraph/twitter card tags use `https://shirazabubakar.vercel.app`
+- **Metadata URLs:** OpenGraph/twitter card tags use `https://shirazabubakar.xyz`
 - **Contact form:** uses `mailto:` links (no backend API)
 - **Lenis + GSAP:** `LenisProvider` disables Lenis auto-RAF, uses GSAP ticker for integration with ScrollTrigger
 - **Path alias:** `@/*` maps to project root

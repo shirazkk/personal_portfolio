@@ -15,12 +15,12 @@ export type BlogPost = {
 
 export const portfolioData = {
   meta: {
-    title: "Shiraz Ali | Full Stack Developer & Agentic AI Engineer",
+    title: "Shiraz Abubakar | Full Stack Developer & Agentic AI Engineer",
     description:
-      "Shiraz Ali, Full Stack Developer & Agentic AI Engineer. Building high-performance Next.js apps, cinematic 3D experiences, and autonomous AI systems.",
+      "Shiraz Abubakar, Full Stack Developer & Agentic AI Engineer. Building high-performance Next.js apps, cinematic 3D experiences, and autonomous AI systems.",
   },
   personal: {
-    name: "Shiraz Ali",
+    name: "Shiraz Abubakar",
     title: "Full Stack Developer | Agentic AI Developer",
     location: "Karachi, Sindh, Pakistan",
     avatar: "/profile.png",
@@ -58,6 +58,8 @@ export const portfolioData = {
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "Blog", href: "#blog" },
+    { label: "Education", href: "#education" },
+    { label: "Credentials", href: "#credentials" },
     { label: "Contact", href: "#contact" },
   ],
   stats: [
@@ -500,7 +502,12 @@ export const portfolioData = {
         year: "2024-Present",
         logo: "/piaic.jpeg",
       },
-    ],
+    ] as Array<{
+      degree: string;
+      institution: string;
+      year: string;
+      logo?: string;
+    }>,
     skills: [
       {
         category: "Web Development",

@@ -3,7 +3,6 @@
 import { FormEvent, useMemo, useState } from "react";
 import { ExternalLink, Mail, Send } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
-import SectionTitle from "./SectionTitle";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -42,7 +41,7 @@ export default function Contact() {
           <p className="text-[#FF6B00] uppercase tracking-[0.35em] text-xs font-bold mb-4">
             Start a build
           </p>
-          <SectionTitle title="Contact" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Contact</h2>
           <div className="h-2 w-24 bg-[#FF6B00] mb-8" />
           <p className="text-xl md:text-2xl text-white/65 leading-relaxed max-w-xl">
             Have an AI product, agent workflow, or cinematic web experience in
@@ -143,7 +142,7 @@ export default function Contact() {
       </div>
 
       <footer className="relative mt-20 text-center text-white/25 text-xs uppercase tracking-widest">
-        &copy; {new Date().getFullYear()} Shiraz Ali. Engineered with Next.js,
+        &copy; {new Date().getFullYear()} Shiraz Abubakar. Engineered with Next.js,
         Three.js, and GSAP.
       </footer>
     </section>

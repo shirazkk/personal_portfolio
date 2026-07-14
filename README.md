@@ -1,6 +1,6 @@
-# Shiraz Ali | Portfolio
+# Shiraz Abubakar | Portfolio
 
-Welcome to the source code of my personal portfolio — a high-performance, visually rich showcase of my work as a Frontend Developer and Agentic AI Engineer.
+Welcome to the source code of my personal portfolio — a high-performance, visually rich showcase of my work as a Full Stack Developer and Agentic AI Engineer.
 
 ## Tech Stack
 - **Framework:** Next.js 16 (App Router), React 19, TypeScript

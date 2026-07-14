@@ -6,7 +6,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { MoveRight } from "lucide-react";
 
-import SectionTitle from "./SectionTitle";
 import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
@@ -48,7 +47,7 @@ const Projects = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-10">
         <div className="relative">
-          <SectionTitle title="Selected Works" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Selected Works</h2>
           <div className="absolute -bottom-3 left-0 h-[2px] w-24 bg-gradient-to-r from-[#FF6B00] to-transparent" />
         </div>
 

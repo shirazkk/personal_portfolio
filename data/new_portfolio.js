@@ -1,10 +1,10 @@
 export const portfolioData = {
   meta: {
-    title: "Shiraz Ali | Web Developer • Agentic AI Developer",
+    title: "Shiraz Abubakar | Web Developer • Agentic AI Developer",
     description: "Portfolio website showcasing web development and Agentic AI work and skills in Next.js, React, TypeScript, sanity(CMS), modern web technologies, openai-agent-sdk, crewai, langchain and LLM applications"
   },
   personal: {
-    name: "Shiraz Ali",
+    name: "Shiraz Abubakar",
     title: "Web Developer • Agentic AI Developer",
     location: "Karachi, Sindh, Pakistan",
     avatar: "/profile.jpg",

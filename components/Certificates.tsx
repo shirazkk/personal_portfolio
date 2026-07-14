@@ -6,8 +6,6 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
-import SectionTitle from './SectionTitle';
-
 const Certificates = () => {
   const container = useRef<HTMLDivElement>(null);
 
@@ -31,7 +29,7 @@ const Certificates = () => {
     <section id="credentials" ref={container} className="py-24 md:py-40 px-6 md:px-12 bg-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col mb-16 text-right items-end">
-          <SectionTitle title="Credentials" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Credentials</h2>
           <div className="h-2 w-32 bg-[#FF6B00]" />
         </div>
         
@@ -40,13 +38,13 @@ const Certificates = () => {
             <div key={index} className="cert-card p-8 bg-[#111] border border-white/5 hover:border-[#FF6B00]/30 transition-[border-color,background-color] duration-300 flex flex-col justify-between group">
               <div>
                 <div className="w-12 h-12 bg-[#FF6B00]/10 flex items-center justify-center mb-6 group-hover:bg-[#FF6B00] transition-colors">
-                  <Image 
-  src={cert.logo} 
-  alt={cert.issuer} 
-  width={32} 
-  height={32} 
-  className="object-contain" 
-  priority={index < 3} // Eager load the first few
+                  <Image
+  src={cert.logo}
+  alt={`${cert.issuer} certification logo`}
+  width={32}
+  height={32}
+  className="object-contain"
+  priority={index < 3}
   sizes="(max-width: 768px) 32px, 32px"
 />
                 </div>

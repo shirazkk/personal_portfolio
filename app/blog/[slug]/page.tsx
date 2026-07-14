@@ -21,13 +21,39 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 
   if (!post) {
     return {
-      title: "Post not found | Shiraz Ali",
+      title: "Post not found",
     };
   }
 
+  const url = `https://shirazabubakar.xyz/blog/${slug}`;
+
   return {
-    title: `${post.metaTitle || post.title} | Shiraz Ali`,
+    title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      url,
+      type: 'article',
+      publishedTime: post.date,
+      authors: ['Shiraz Abubakar'],
+      images: [
+        {
+          url: 'https://shirazabubakar.xyz/profile.png',
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      images: ['https://shirazabubakar.xyz/profile.png'],
+    },
   };
 }
 
@@ -89,8 +115,60 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const url = `https://shirazabubakar.xyz/blog/${slug}`;
+  const publishedDate = new Date(post.date).toISOString();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: 'https://shirazabubakar.xyz/profile.png',
+    author: {
+      '@type': 'Person',
+      name: 'Shiraz Abubakar',
+      url: 'https://shirazabubakar.xyz',
+    },
+    datePublished: publishedDate,
+    dateModified: publishedDate,
+    url,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://shirazabubakar.xyz',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'https://shirazabubakar.xyz/blog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: url,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-dvh bg-[#0a0a0a] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <article className="relative overflow-hidden px-6 md:px-12 pt-10 pb-24">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_25%_10%,rgba(255,107,0,0.18),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_38%)]" />
         <div className="max-w-4xl mx-auto">
@@ -143,6 +221,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="border-t border-white/10 pt-12">
             <div className="portable-text">
               <PortableText value={post.body} components={ptComponents} />
+            </div>
+          </div>
+
+          {/* Related Projects Section */}
+          <div className="mt-16 border-t border-white/10 pt-12">
+            <h3 className="text-2xl font-bebas mb-6 text-white/80">Related Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Link
+                href="/#projects"
+                className="p-4 border border-white/10 bg-white/[0.02] hover:border-[#FF6B00]/50 hover:bg-white/[0.05] transition-all group"
+              >
+                <p className="text-[#FF6B00] text-xs font-bold uppercase tracking-wider mb-2">AI & Agentic Systems</p>
+                <p className="text-white/60 text-sm group-hover:text-white/80 transition-colors">View AI agent projects and autonomous systems</p>
+              </Link>
+              <Link
+                href="/#projects"
+                className="p-4 border border-white/10 bg-white/[0.02] hover:border-[#FF6B00]/50 hover:bg-white/[0.05] transition-all group"
+              >
+                <p className="text-[#FF6B00] text-xs font-bold uppercase tracking-wider mb-2">Full Stack Applications</p>
+                <p className="text-white/60 text-sm group-hover:text-white/80 transition-colors">Explore Next.js, FastAPI, and Supabase projects</p>
+              </Link>
             </div>
           </div>
         </div>

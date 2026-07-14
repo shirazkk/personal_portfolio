@@ -8,6 +8,16 @@ import Education from '@/components/Education';
 import Certificates from '@/components/Certificates';
 import BlogPreview from '@/components/BlogPreview';
 import Contact from '@/components/Contact';
+import { Metadata } from 'next';
+import { portfolioData } from '@/data/portfolio';
+
+export const metadata: Metadata = {
+  title: portfolioData.meta.title,
+  description: portfolioData.meta.description,
+  alternates: {
+    canonical: 'https://shirazabubakar.xyz',
+  },
+};
 
 export default function Home() {
   return (

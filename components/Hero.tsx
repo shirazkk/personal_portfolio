@@ -56,10 +56,10 @@ const Hero = () => {
       
       <div className="z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-end">
         <div>
-          <h2 className="hero-reveal text-[#FF6B00] text-sm md:text-base font-bold tracking-[0.35em] uppercase mb-5">
+          <p className="hero-reveal text-[#FF6B00] text-sm md:text-base font-bold tracking-[0.35em] uppercase mb-5">
           {portfolioData.personal.title}
-        </h2>
-        
+        </p>
+
           <h1 ref={headlineRef} className="hero-reveal text-[18vw] sm:text-[14vw] lg:text-[9.8vw] xl:text-[8.8rem] font-bebas leading-[0.78] mb-8 uppercase max-w-5xl">
           {portfolioData.personal.name}
         </h1>

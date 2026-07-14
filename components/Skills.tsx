@@ -5,8 +5,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-import SectionTitle from './SectionTitle';
-
 const Skills = () => {
   const container = useRef<HTMLDivElement>(null);
 
@@ -30,16 +28,16 @@ const Skills = () => {
     <section id="skills" ref={container} className="py-24 px-6 md:px-12 bg-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col mb-16">
-          <SectionTitle title="Tech Arsenal" />
+          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Tech Arsenal</h2>
           <div className="h-2 w-32 bg-[#FF6B00]" />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioData.credentials.skills.map((skill, index) => (
             <div key={index} className="skill-category p-8 border border-white/10 hover:border-[#FF6B00]/50 transition-[border-color] duration-300 group">
-              <h3 className="text-[#FF6B00] text-2xl font-bebas mb-6 tracking-wide group-hover:translate-x-2 transition-transform">
+              <h2 className="text-[#FF6B00] text-2xl font-bebas mb-6 tracking-wide group-hover:translate-x-2 transition-transform">
                 {skill.category}
-              </h3>
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item, i) => (
                   <span key={i} className="px-3 py-1 bg-white/5 text-sm font-medium border border-white/5 hover:bg-[#FF6B00] hover:text-white transition-[background-color,color] cursor-default">

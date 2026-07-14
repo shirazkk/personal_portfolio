@@ -14,7 +14,7 @@ Sanity is your content backend.
     - Permissions: **Editor** (This allows the agent to create new posts).
     - Save and copy the token immediately (you won't see it again).
 4.  **CORS Origins:**
-    - Under **Settings** > **API**, add `http://localhost:3000` and your production URL (e.g., `https://shirazali-portfolio.vercel.app`) to the **CORS Origins** list with "Allow credentials" checked.
+    - Under **Settings** > **API**, add `http://localhost:3000` and your production URL (e.g., `https://shirazabubakar.xyz`) to the **CORS Origins** list with "Allow credentials" checked.
 
 ## 2. Research API (Serper.dev)
 Serper provides the real-time Google search data the agent uses for research.

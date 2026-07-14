@@ -16,16 +16,19 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: portfolioData.meta.title,
+  title: {
+    default: portfolioData.meta.title,
+    template: "%s | Shiraz Abubakar",
+  },
   description: portfolioData.meta.description,
   openGraph: {
     title: portfolioData.meta.title,
     description: portfolioData.meta.description,
-    url: "https://shirazabubakar.vercel.app",
-    siteName: "Shiraz Ali Portfolio",
+    url: "https://shirazabubakar.xyz",
+    siteName: "Shiraz Abubakar Portfolio",
     images: [
       {
-        url: "https://shirazabubakar.vercel.app/profile.png",
+        url: "https://shirazabubakar.xyz/profile.png",
         width: 800,
         height: 600,
       },
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: portfolioData.meta.title,
     description: portfolioData.meta.description,
-    images: ["https://shirazabubakar.vercel.app/profile.png"],
+    images: ["https://shirazabubakar.xyz/profile.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -66,10 +69,10 @@ export default function RootLayout({
               "@type": "ProfilePage",
               "mainEntity": {
                 "@type": "Person",
-                "name": "Shiraz Ali",
+                "name": "Shiraz Abubakar",
                 "jobTitle": "Full Stack Developer & Agentic AI Engineer",
-                "url": "https://shirazabubakar.vercel.app",
-                "image": "https://shirazabubakar.vercel.app/profile.png",
+                "url": "https://shirazabubakar.xyz",
+                "image": "https://shirazabubakar.xyz/profile.png",
                 "sameAs": [
                   "https://github.com/shirazkk",
                   "https://www.linkedin.com/in/shirazali8",

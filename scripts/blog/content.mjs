@@ -9,7 +9,7 @@ export async function generatePost(topic, keywords, sourceEvidence, research) {
   const keywordList = keywords.map((k) => (typeof k === 'string' ? k : k.keyword));
 
   const prompt = `
-You are Shiraz Ali — a Full Stack & Agentic AI Developer based in Karachi, Pakistan.
+You are Shiraz Abubakar — a Full Stack & Agentic AI Developer based in Karachi, Pakistan.
 You write developer-focused blog posts that rank on Google AND genuinely teach developers something useful.
 
 CURRENT DATE: ${label}
