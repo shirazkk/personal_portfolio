@@ -39,14 +39,14 @@ const Certificates = () => {
               <div>
                 <div className="w-12 h-12 bg-[#FF6B00]/10 flex items-center justify-center mb-6 group-hover:bg-[#FF6B00] transition-colors">
                   <Image
-  src={cert.logo}
-  alt={`${cert.issuer} certification logo`}
-  width={32}
-  height={32}
-  className="object-contain"
-  priority={index < 3}
-  sizes="(max-width: 768px) 32px, 32px"
-/>
+                    src={cert.logo}
+                    alt={`${cert.issuer} certification logo`}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                    loading={index < 3 ? "eager" : "lazy"}
+                    sizes="32px"
+                  />
                 </div>
                 <h3 className="text-2xl font-bebas mb-2 leading-tight">{cert.name}</h3>
                 <p className="text-white/40 uppercase tracking-widest text-[10px] font-bold">{cert.issuer}</p>

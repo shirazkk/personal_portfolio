@@ -1,0 +1,13 @@
+# Allow all crawlers to access the site
+User-agent: *
+Allow: /
+
+# Disallow specific paths if needed
+# Disallow: /private/
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://shirazabubakar.xyz/sitemap.xml
+
+# Crawl delay (optional)
+# Crawl-delay: 1

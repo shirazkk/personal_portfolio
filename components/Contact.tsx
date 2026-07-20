@@ -133,7 +133,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-[#FF6B00] px-6 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.99]"
+            className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-[#FF6B00] px-6 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-offset-2 focus:ring-offset-[#0d0d0d]"
           >
             <Send size={20} aria-hidden="true" />
             Open Email Draft
@@ -141,10 +141,7 @@ export default function Contact() {
         </form>
       </div>
 
-      <footer className="relative mt-20 text-center text-white/25 text-xs uppercase tracking-widest">
-        &copy; {new Date().getFullYear()} Shiraz Abubakar. Engineered with Next.js,
-        Three.js, and GSAP.
-      </footer>
+      
     </section>
   );
 }

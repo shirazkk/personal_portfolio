@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef } from 'react';
-import HeroCanvas from './HeroCanvas';
+import HeroCanvasWrapper from './HeroCanvasWrapper';
 import { portfolioData } from '@/data/portfolio';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -50,7 +50,7 @@ const Hero = () => {
   return (
     <section ref={container} className="relative min-h-dvh w-full flex items-center px-6 md:px-12 overflow-hidden pt-28 pb-20">
       <div className="hero-canvas-wrapper absolute inset-0 -z-10">
-        <HeroCanvas />
+        <HeroCanvasWrapper />
       </div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_72%_34%,rgba(255,107,0,0.2),transparent_32%),linear-gradient(90deg,#0a0a0a_0%,rgba(10,10,10,0.84)_42%,rgba(10,10,10,0.4)_100%)]" />
       
@@ -72,7 +72,8 @@ const Hero = () => {
             <button
               type="button"
               onClick={scrollToContact}
-              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 bg-[#FF6B00] px-7 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.98]"
+              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 bg-[#FF6B00] px-7 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Scroll to contact section"
             >
               Start a Project
               <ArrowRight size={20} aria-hidden="true" />
@@ -80,14 +81,17 @@ const Hero = () => {
             <button
               type="button"
               onClick={scrollToProjects}
-              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white transition hover:border-[#FF6B00] hover:text-[#FF6B00] active:scale-[0.98]"
+              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white transition hover:border-[#FF6B00] hover:text-[#FF6B00] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Scroll to projects section"
             >
               View Work
               <ArrowDown size={20} aria-hidden="true" />
             </button>
             <a
               href="/shiraz_cv.docx"
-              className="cursor-pointer  inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white/75 transition hover:border-white hover:text-white"
+              className="cursor-pointer inline-flex min-h-12 items-center justify-center gap-3 border border-white/15 px-7 py-3 font-bebas text-2xl text-white/75 transition hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Download resume"
+              download
             >
               Resume
               <Download size={20} aria-hidden="true" />

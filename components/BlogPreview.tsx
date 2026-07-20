@@ -23,8 +23,9 @@ export default async function BlogPreview() {
 
   if (posts.length === 0) return null;
 
-  // Show only first 3 posts
-  const previewPosts = posts.slice(0, 3);
+  // Show first 6 posts on homepage (expanded from 3)
+  const previewPosts = posts.slice(0, 6);
+  const hasMorePosts = posts.length > 6;
 
   return (
     <section id="blog" className="py-24 md:py-40 px-6 md:px-12 max-w-7xl mx-auto">
@@ -45,13 +46,13 @@ export default async function BlogPreview() {
             href="/blog"
             className="mt-6 inline-flex min-h-11 items-center gap-2 border border-white/15 px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-[#FF6B00] hover:text-[#FF6B00]"
           >
-            Read all posts
+            View all posts
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {previewPosts.map((post: BlogPost, index: number) => (
           <Link
             key={post.slug}
@@ -76,6 +77,18 @@ export default async function BlogPreview() {
           </Link>
         ))}
       </div>
+
+      {hasMorePosts && (
+        <div className="mt-12 text-center">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:border-[#FF6B00] hover:bg-[#FF6B00]/10 transition-all duration-300 text-sm font-bold uppercase tracking-[0.2em]"
+          >
+            Load More Posts
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

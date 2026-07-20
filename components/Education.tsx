@@ -44,8 +44,8 @@ const Education = () => {
                   width={40}
                   height={40}
                   className="object-contain opacity-70"
-                  priority={index < 2}
-                  sizes="(max-width: 768px) 40px, 40px"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  sizes="40px"
                 />
               )}
             </div>

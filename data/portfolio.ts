@@ -48,7 +48,6 @@ export const portfolioData = {
         icon: "Linkedin",
       },
       { platform: "Twitter", url: "https://x.com/KkShiraz", icon: "Twitter" },
-      { platform: "Instagram", url: "#", icon: "Instagram" },
     ],
   },
   navigation: [
