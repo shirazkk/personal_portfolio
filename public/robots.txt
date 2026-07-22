@@ -1,13 +1,11 @@
-# Allow all crawlers to access the site
+# *
 User-agent: *
 Allow: /
+Disallow: /studio
+Disallow: /private
 
-# Disallow specific paths if needed
-# Disallow: /private/
-# Disallow: /admin/
+# Host
+Host: https://shirazabubakar.xyz
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://shirazabubakar.xyz/sitemap.xml
-
-# Crawl delay (optional)
-# Crawl-delay: 1
