@@ -1,147 +1,131 @@
-"use client";
+'use client';
 
-import { FormEvent, useMemo, useState } from "react";
-import { ExternalLink, Mail, Send } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowUp, Copy, Send } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import { prefersReducedMotion, revealOnce } from '@/lib/animations';
+import { portfolioData } from '@/data/portfolio';
+
+const navigation = [
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#skills' },
+  { label: 'Work', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const sectionRef = useRef<HTMLElement>(null);
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [feedback, setFeedback] = useState('');
+  const [copyFeedback, setCopyFeedback] = useState('Click to copy email address');
+  const [localTime, setLocalTime] = useState('');
+
+  useGSAP(() => {
+    const scope = sectionRef.current;
+    if (!scope || prefersReducedMotion()) return;
+    scope.querySelectorAll<HTMLElement>('.contact-reveal').forEach((element) => {
+      revealOnce({ targets: element, trigger: element, y: 28 });
+    });
+  }, { scope: sectionRef });
 
   const mailtoHref = useMemo(() => {
-    const subject = form.subject || "Portfolio inquiry";
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      "",
-      form.message,
-    ].join("\n");
-
+    const subject = `Portfolio inquiry from ${form.name}`;
+    const body = [`Name: ${form.name}`, `Email: ${form.email}`, '', form.message].join('\n');
     return `mailto:${portfolioData.personal.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }, [form]);
 
+  useEffect(() => {
+    const update = () => setLocalTime(new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Karachi', hour: 'numeric', minute: '2-digit', hour12: true,
+    }).format(new Date()) + ' PKT');
+    update();
+    const timer = window.setInterval(update, 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setFeedback('Your email draft is ready.');
     window.location.href = mailtoHref;
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(portfolioData.personal.email);
+      setCopyFeedback('Copied to clipboard');
+    } catch {
+      setCopyFeedback(portfolioData.personal.email);
+    }
+    window.setTimeout(() => setCopyFeedback('Click to copy email address'), 2200);
+  };
+
   return (
-    <section
-      id="contact"
-      className="relative overflow-hidden py-24 md:py-40 px-6 md:px-12 bg-white/[0.04]"
-    >
-      <div className="absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-[#FF6B00]/10 blur-[120px]" />
+    <>
+      <section id="contact" ref={sectionRef} className="contact-section relative overflow-hidden px-6 py-24 md:px-12 md:py-32">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-48 top-0 size-[38rem] rounded-full bg-[#1e6b4d]/10 blur-[130px]" />
+        <div className="relative mx-auto max-w-[1152px]">
+          <header className="contact-reveal mb-12 max-w-4xl md:mb-16">
+            <p className="eyebrow mb-5">05 / Get in touch</p>
+            <h2 className="font-manrope font-extrabold text-[clamp(4.5rem,10vw,8rem)] leading-[.82] tracking-[-.075em] text-[#edf0eb]">LET&apos;S <span className="about-serif font-normal text-accent">talk</span></h2>
+            <span className="mt-7 block h-[3px] w-20 bg-accent" />
+            <p className="mt-7 max-w-2xl text-base leading-7 text-white/65 md:text-lg">Have a project in mind or just want to say hello? Tell me a little about it and I&apos;ll get back to you.</p>
+          </header>
 
-      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-start">
-        <div>
-          <p className="text-[#FF6B00] uppercase tracking-[0.35em] text-xs font-bold mb-4">
-            Start a build
-          </p>
-          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Contact</h2>
-          <div className="h-2 w-24 bg-[#FF6B00] mb-8" />
-          <p className="text-xl md:text-2xl text-white/65 leading-relaxed max-w-xl">
-            Have an AI product, agent workflow, or cinematic web experience in
-            mind? Send the basics and I will reply with the next practical step.
-          </p>
+          <form onSubmit={handleSubmit} className="contact-reveal contact-form rounded-[1.5rem] border border-white/10 bg-white/[.025] p-5 sm:p-7 md:p-10">
+            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+              <label className="contact-field">Your Name *
+                <input required autoComplete="name" name="name" placeholder="Your Name" value={form.name} onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))} />
+              </label>
+              <label className="contact-field">Your Email *
+                <input required type="email" autoComplete="email" name="email" placeholder="you@example.com" value={form.email} onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))} />
+              </label>
+            </div>
+            <label className="contact-field mt-7">Message *
+              <textarea required minLength={30} maxLength={1200} rows={5} name="message" placeholder="Write your message here..." value={form.message} onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))} />
+            </label>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-4">
+              <p className="font-mono text-[10px] text-white/35">{form.message.length} / 30 minimum characters</p>
+              <button type="submit" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[#34d399] px-7 text-[10px] font-extrabold uppercase tracking-[.14em] text-[#0a0f0d] transition duration-200 hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[.98] focus-visible:outline-offset-4"><Send size={15} aria-hidden="true" />Send message</button>
+            </div>
+            <p className="sr-only" role="status" aria-live="polite">{feedback}</p>
+          </form>
 
-          <a
-            href={`mailto:${portfolioData.personal.email}`}
-            className="mt-8 inline-flex min-h-12 items-center gap-3 bg-[#FF6B00] px-6 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a]"
-          >
-            <Mail size={22} aria-hidden="true" />
-            {portfolioData.personal.email}
-          </a>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            {portfolioData.personal.social
-              .filter((social) => social.url !== "#")
-              .map((social) => (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 border border-white/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.16em] text-white/65 transition hover:border-[#FF6B00] hover:text-[#FF6B00]"
-                >
-                  {social.platform}
-                  <ExternalLink size={16} aria-hidden="true" />
-                </a>
-              ))}
+          <div className="contact-reveal direct-contact mt-12 flex flex-col items-center justify-center rounded-[1.5rem] border border-white/[.08] px-5 py-12 text-center sm:py-16">
+            <p className="font-mono text-[10px] uppercase tracking-[.2em] text-white/35">Direct contact</p>
+            <button type="button" onClick={copyEmail} className="mt-4 flex items-center gap-3 text-center font-manrope text-[clamp(1.25rem,4.4vw,3rem)] font-bold uppercase tracking-[-.055em] text-white/85 transition-colors duration-200 hover:text-[#7fe4b2] active:opacity-70">
+              <span>{portfolioData.personal.email}</span><Copy size={16} className="shrink-0 text-accent" aria-hidden="true" />
+            </button>
+            <p className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-white/30" aria-live="polite">{copyFeedback}</p>
           </div>
         </div>
+      </section>
 
-        <form
-          onSubmit={handleSubmit}
-          className="border border-white/10 bg-[#0d0d0d]/80 p-5 md:p-8 shadow-2xl shadow-black/30"
-        >
-          <div className="grid md:grid-cols-2 gap-5">
-            <label className="flex flex-col gap-2 text-sm font-bold uppercase tracking-[0.18em] text-white/50">
-              Name
-              <input
-                required
-                value={form.name}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, name: event.target.value }))
-                }
-                className="min-h-12 border border-white/10 bg-white/[0.04] px-4 text-base normal-case tracking-normal text-white outline-none transition focus:border-[#FF6B00]"
-                autoComplete="name"
-              />
-            </label>
-            <label className="flex flex-col gap-2 text-sm font-bold uppercase tracking-[0.18em] text-white/50">
-              Email
-              <input
-                required
-                type="email"
-                value={form.email}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, email: event.target.value }))
-                }
-                className="min-h-12 border border-white/10 bg-white/[0.04] px-4 text-base normal-case tracking-normal text-white outline-none transition focus:border-[#FF6B00]"
-                autoComplete="email"
-              />
-            </label>
+      <footer className="portfolio-footer border-t border-white/10 px-6 py-12 md:px-12 md:py-16">
+        <div className="mx-auto grid max-w-[1280px] gap-10 sm:grid-cols-2 md:grid-cols-3">
+          <nav aria-label="Footer navigation">
+            <h2 className="font-manrope text-base font-bold text-white/85">Menu</h2>
+            <ul className="mt-5 space-y-3">
+              {navigation.map((item) => <li key={item.href}><a href={item.href} className="text-[10px] font-semibold uppercase tracking-[.12em] text-white/45 transition-colors hover:text-accent">{item.label}</a></li>)}
+            </ul>
+          </nav>
+          <nav aria-label="Social links">
+            <h2 className="font-manrope text-base font-bold text-white/85">Socials</h2>
+            <ul className="mt-5 space-y-3">
+              {portfolioData.personal.social.map((item) => <li key={item.platform}><a href={item.url} target="_blank" rel="noreferrer" className="text-[10px] font-semibold uppercase tracking-[.12em] text-white/45 transition-colors hover:text-accent">{item.platform}</a></li>)}
+              <li><a href="https://github.com/shirazkk" target="_blank" rel="noreferrer" className="text-[10px] font-semibold uppercase tracking-[.12em] text-white/45 transition-colors hover:text-accent">Source code</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 className="font-manrope text-base font-bold text-white/85">Local time</h2>
+            <p className="mt-5 text-sm text-white/55">{localTime || 'Loading local time...'}</p>
+            <p className="mt-2 font-mono text-[9px] uppercase tracking-[.12em] text-white/30">Karachi, Pakistan</p>
           </div>
-
-          <label className="mt-5 flex flex-col gap-2 text-sm font-bold uppercase tracking-[0.18em] text-white/50">
-            Subject
-            <input
-              required
-              value={form.subject}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, subject: event.target.value }))
-              }
-              className="min-h-12 border border-white/10 bg-white/[0.04] px-4 text-base normal-case tracking-normal text-white outline-none transition focus:border-[#FF6B00]"
-            />
-          </label>
-
-          <label className="mt-5 flex flex-col gap-2 text-sm font-bold uppercase tracking-[0.18em] text-white/50">
-            Message
-            <textarea
-              required
-              rows={7}
-              value={form.message}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, message: event.target.value }))
-              }
-              className="resize-none border border-white/10 bg-white/[0.04] px-4 py-3 text-base normal-case tracking-normal text-white outline-none transition focus:border-[#FF6B00]"
-            />
-          </label>
-
-          <button
-            type="submit"
-            className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-[#FF6B00] px-6 py-3 font-bebas text-2xl text-white transition hover:bg-white hover:text-[#0a0a0a] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-offset-2 focus:ring-offset-[#0d0d0d]"
-          >
-            <Send size={20} aria-hidden="true" />
-            Open Email Draft
-          </button>
-        </form>
-      </div>
-
-      
-    </section>
+        </div>
+        <div className="mx-auto mt-12 flex max-w-[1280px] items-center justify-between border-t border-white/[.08] pt-5">
+          <span className="font-mono text-[9px] uppercase tracking-[.13em] text-white/30">© {new Date().getFullYear()} Shiraz Abubakar</span>
+          <a href="#home" aria-label="Scroll to top" className="grid size-11 place-items-center rounded-full border border-white/10 text-white/55 transition duration-200 hover:border-accent/40 hover:text-accent active:scale-95"><ArrowUp size={17} aria-hidden="true" /><span className="sr-only">Scroll to top</span></a>
+        </div>
+      </footer>
+    </>
   );
 }

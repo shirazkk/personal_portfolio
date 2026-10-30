@@ -1,88 +1,68 @@
-'use client'
-import React, { useRef } from 'react';
-import { portfolioData } from '@/data/portfolio';
+'use client';
+
+import { useRef } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { portfolioData } from '@/data/portfolio';
 
-const Experience = () => {
-  const container = useRef<HTMLDivElement>(null);
+export default function Experience() {
+  const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
-
-    // Timeline line animation
-    gsap.from('.timeline-line', {
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top 60%',
-        end: 'bottom 80%',
-        scrub: true,
-      },
-      scaleY: 0,
-      transformOrigin: 'top center',
-    });
-
-    // Content items animation
     gsap.from('.experience-item', {
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top 70%',
-      },
-      x: (i) => i % 2 === 0 ? -100 : 100,
+      y: 28,
       opacity: 0,
-      duration: 1,
-      stagger: 0.3,
-      ease: 'power4.out',
+      duration: 0.75,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: sectionRef.current, start: 'top 74%', once: true },
     });
-  }, { scope: container });
+  }, { scope: sectionRef });
 
   return (
-    <section id="experience" ref={container} className="py-24 md:py-40 px-6 md:px-12 bg-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col mb-20 text-center items-center">
-          <h2 className="text-6xl md:text-8xl font-bebas mb-4">The Journey</h2>
-          <div className="h-2 w-32 bg-[#FF6B00]" />
+    <section id="experience" ref={sectionRef} className="px-6 py-24 md:px-12 md:py-36">
+      <div className="mx-auto max-w-[1320px]">
+        <div className="mb-12 flex items-center gap-4">
+          <span className="eyebrow">03 / Experience</span><span className="h-px flex-1 bg-white/10" />
         </div>
-        
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="timeline-line absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-white/20 z-0 hidden md:block" />
-          
-          <div className="flex flex-col gap-16 md:gap-32">
-            {portfolioData.experience.map((exp, index) => (
-              <div 
-                key={index} 
-                className={`experience-item flex flex-col md:flex-row items-center gap-8 md:gap-24 relative z-10 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <p className="text-[#FF6B00] font-bebas text-2xl mb-2">{exp.period}</p>
-                  <h2 className="text-4xl md:text-5xl font-bebas mb-2">{exp.title}</h2>
-                  <p className="text-xl text-white/50 font-medium mb-4">{exp.company}</p>
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <h2 className="font-bebas text-6xl leading-[.9] text-white md:text-8xl">Built through<br /><span className="text-[#34d399]">doing.</span></h2>
+          <p className="max-w-md text-sm leading-7 text-white/50">A hands-on path through product building, team leadership, and independent work.</p>
+        </div>
+
+        <div className="grid gap-4">
+          {portfolioData.experience.map((item, index) => (
+            <article key={`${item.company}-${item.title}`} className="experience-item glass-surface grid gap-6 rounded-[1.6rem] p-6 md:grid-cols-[.38fr_1fr] md:gap-10 md:p-8">
+              <div className="flex items-start justify-between gap-4 md:flex-col md:justify-start">
+                <span className="rounded-full border border-[#34d399]/20 bg-[#34d399]/[.06] px-3 py-2 font-mono text-[10px] text-[#34d399]">{item.period}</span>
+                <span className="font-mono text-[10px] text-white/25">ROLE / 0{index + 1}</span>
+              </div>
+              <div>
+                <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
+                  <div>
+                    <h3 className="font-bebas text-3xl leading-none text-white md:text-4xl">{item.title}</h3>
+                    <p className="mt-2 text-sm font-semibold text-white/55">{item.company}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-xs text-white/35">{item.location}<ArrowUpRight size={13} aria-hidden="true" /></span>
                 </div>
-                
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-[#FF6B00] rounded-full hidden md:block border-4 border-[#0a0a0a]" />
-                
-                <div className="w-full md:w-1/2">
-                  <ul className="flex flex-col gap-4 text-white/70">
-                    {exp.achievements.map((point, i) => (
-                      <li key={i} className="flex items-start gap-4">
-                        <span className="w-1.5 h-1.5 bg-[#FF6B00] mt-2 shrink-0" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <p className="mt-5 max-w-4xl text-sm leading-7 text-white/50">{item.description}</p>
+                <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {item.achievements.slice(0, 4).map((achievement) => (
+                    <li key={achievement} className="flex gap-3 text-xs leading-6 text-white/55"><span className="mt-[9px] size-1.5 shrink-0 rounded-full bg-[#34d399]" />{achievement}</li>
+                  ))}
+                </ul>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {item.technologies.slice(0, 6).map((technology) => <span key={technology} className="text-[9px] uppercase tracking-[.1em] text-white/30">{technology}</span>)}
                 </div>
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Experience;
+}

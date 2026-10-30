@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { POST_QUERY, SLUGS_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+import Reveal from "@/components/Reveal";
 
 
 type BlogPostPageProps = {
@@ -181,6 +182,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           <header className="pt-16 pb-14">
+            <Reveal y={20}>
             <p className="text-[#FF6B00] uppercase tracking-[0.35em] text-xs font-bold mb-5">
               {post.heroLabel}
             </p>
@@ -216,12 +218,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </span>
               ))}
             </div>
+            </Reveal>
           </header>
 
           <div className="border-t border-white/10 pt-12">
-            <div className="portable-text">
+            <Reveal className="portable-text" y={16}>
               <PortableText value={post.body} components={ptComponents} />
-            </div>
+            </Reveal>
           </div>
 
           {/* Related Projects Section */}

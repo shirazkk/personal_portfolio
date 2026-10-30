@@ -1,17 +1,14 @@
 'use client'
 
-import React, { Component, ReactNode } from 'react'
+import { Component } from 'react'
 import HeroCanvas from './HeroCanvas'
 
 interface State {
   hasError: boolean
 }
 
-class HeroCanvasWrapper extends Component<{}, State> {
-  constructor(props: {}) {
-    super(props)
-    this.state = { hasError: false }
-  }
+class HeroCanvasWrapper extends Component<Record<string, never>, State> {
+  state: State = { hasError: false }
 
   static getDerivedStateFromError(): State {
     return { hasError: true }

@@ -1,106 +1,79 @@
-"use client";
-import React, { useRef } from "react";
-import { portfolioData } from "@/data/portfolio";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { MoveRight } from "lucide-react";
+'use client';
 
-import ProjectCard from "./ProjectCard";
+import { useRef, type CSSProperties } from 'react';
+import { ArrowUpRight, Code2 } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import { prefersReducedMotion, revealOnce } from '@/lib/animations';
+import { portfolioData } from '@/data/portfolio';
+import { useStickyStack } from '@/lib/useStickyStack';
 
-const Projects = () => {
-  const container = useRef<HTMLDivElement>(null);
+/** Per-card CSS vars: --stack-index drives the sticky `top`, zIndex stacks later cards on top. */
+const stackCardStyle = (index: number) =>
+  ({ '--stack-index': index, zIndex: index + 1 } as CSSProperties);
 
-  useGSAP(
-    () => {
-      gsap.registerPlugin(ScrollTrigger);
+export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const projects = portfolioData.projects.filter((project) => project.featured);
 
-      // Animate each card individually as it enters the viewport
-      // This prevents cards being invisible if user lands directly on section
-      const cards = document.querySelectorAll(".project-card");
+  // Heading + row content reveal. Row shells are left untouched for the sticky scale.
+  useGSAP(() => {
+    const scope = sectionRef.current;
+    if (!scope || prefersReducedMotion()) return;
 
-      cards.forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 95%", // fire as soon as card top is 95% down the viewport
-            toggleActions: "play none none none",
-            once: true,
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.7,
-          delay: i * 0.05, // subtle stagger via delay
-          ease: "power3.out",
-        });
+    const heading = scope.querySelector('.project-heading');
+    if (heading) revealOnce({ targets: heading, trigger: heading, y: 26 });
+
+    scope.querySelectorAll<HTMLElement>('.project-row').forEach((row) => {
+      revealOnce({
+        targets: row.querySelectorAll('.project-content'),
+        trigger: row,
+        y: 14,
+        stagger: 0.06,
+        start: 'top 88%',
       });
-    },
-    { scope: container }
-  );
+    });
+  }, { scope: sectionRef });
+
+  // Optional depth: shrink each card as the next one covers it.
+  useStickyStack(sectionRef, '.project-row');
 
   return (
-    <section
-      id="projects"
-      ref={container}
-      className="py-32 md:py-48 px-6 md:px-12 max-w-[1400px] mx-auto"
-    >
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-10">
-        <div className="relative">
-          <h2 className="text-6xl md:text-8xl font-bebas mb-4">Selected Works</h2>
-          <div className="absolute -bottom-3 left-0 h-[2px] w-24 bg-gradient-to-r from-[#FF6B00] to-transparent" />
+    <section id="projects" ref={sectionRef} className="project-section px-6 py-24 md:px-12 md:py-32">
+      <div className="mx-auto max-w-[1152px]">
+        <header className="project-heading border-b border-[#17211c]/15 pb-12 md:pb-14">
+          <h2 className="font-manrope font-extrabold text-[clamp(4.4rem,7vw,6rem)] leading-[.82] tracking-[-.075em] text-[#151a17]">
+            SELECTED <span className="about-serif font-normal text-[#31b783]">works</span>
+          </h2>
+          <span className="mt-5 block h-[3px] w-20 bg-[#31b783]" />
+        </header>
+
+        <div className="project-stack">
+          {projects.map((project, index) => {
+            const href = project.liveUrl || project.githubUrl || '#contact';
+            return (
+              <article
+                key={project.title}
+                className="project-row group grid gap-3 border-b border-[#17211c]/15 py-9 md:grid-cols-[56px_1fr_auto] md:items-center md:gap-6 md:py-12"
+                style={stackCardStyle(index)}
+              >
+                <span className="project-content font-mono text-xs text-[#52645a]/65">{String(index + 1).padStart(2, '0')}</span>
+                <div className="project-content">
+                  <p className="mb-2 font-mono text-[9px] uppercase tracking-[.18em] text-[#52645a]/65">{project.category}</p>
+                  <h3 className="font-manrope text-3xl font-extrabold uppercase leading-[.98] tracking-[-.055em] text-[#151a17] transition-colors duration-300 group-hover:text-[#279c70] sm:text-4xl md:text-6xl">{project.title}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#26332c]/65 md:hidden">{project.description}</p>
+                </div>
+                <div className="project-content flex items-center gap-5 md:pl-8">
+                  <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 self-start font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-[#17211c] transition duration-200 hover:text-[#279c70] active:opacity-70 md:self-center">
+                    {project.liveUrl ? 'View project' : 'View source'} <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                  {project.githubUrl && project.liveUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer" aria-label={`${project.title} source code on GitHub`} className="text-[#52645a]/65 transition-colors hover:text-[#279c70]"><Code2 size={16} aria-hidden="true" /></a>}
+                </div>
+              </article>
+            );
+          })}
         </div>
-
-        <div className="flex flex-col gap-4 max-w-md">
-          <p className="text-white/40 text-base leading-relaxed">
-            From autonomous AI agents to cinematic frontends, these projects
-            represent my obsession with performance, intelligence, and high-end design.
-          </p>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-white/15" />
-            <span className="text-[9px] uppercase tracking-[0.35em] text-white/30">
-              Scroll to explore
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Simple uniform grid — 3 columns on desktop */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {portfolioData.projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            project={project}
-            index={index}
-          />
-        ))}
-      </div>
-
-      {/* Footer CTA */}
-      <div className="mt-24 flex flex-col items-center gap-5">
-        <p className="text-white/20 text-sm font-light italic">
-          More systems being built in the dark...
-        </p>
-
-        <a
-          href={
-            portfolioData.personal.social.find((s) => s.platform === "GitHub")?.url
-          }
-          target="_blank"
-          rel="noreferrer"
-          className="group relative flex items-center gap-3 px-10 py-4 bg-white text-black font-bebas text-xl overflow-hidden rounded-full hover:bg-[#FF6B00] hover:text-white transition-colors duration-500"
-        >
-          <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          </span>
-          <span className="relative z-10 flex items-center gap-3">
-            Explore All Repositories
-            <MoveRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-          </span>
-        </a>
+        <a href="https://github.com/shirazkk" target="_blank" rel="noreferrer" className="group mt-8 inline-flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[.14em] text-[#26332c]/60 transition-colors hover:text-[#279c70]">More work on GitHub <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
       </div>
     </section>
   );
-};
-
-export default Projects;
+}

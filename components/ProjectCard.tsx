@@ -1,8 +1,4 @@
-"use client";
-import React, { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { Code, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Code2, Sparkles } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -17,133 +13,42 @@ interface Project {
 interface ProjectCardProps {
   project: Project;
   index: number;
-  className?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, className = "" }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
+const atmospheres = [
+  'from-[#174435] via-[#10231b] to-[#0a100c]',
+  'from-[#284335] via-[#162219] to-[#0a100c]',
+  'from-[#1a4938] via-[#11271d] to-[#0a100c]',
+];
 
-  useGSAP(() => {
-    if (!cardRef.current) return;
-    const card = cardRef.current;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const { left, top, width, height } = card.getBoundingClientRect();
-      const x = e.clientX - left;
-      const y = e.clientY - top;
-      const rotateX = ((y - height / 2) / height) * 6;
-      const rotateY = ((x - width / 2) / width) * -6;
-
-      gsap.to(card, { rotateX, rotateY, duration: 0.4, ease: "power2.out", transformPerspective: 1000 });
-
-      if (glowRef.current) {
-        gsap.to(glowRef.current, { x: x - 150, y: y - 150, duration: 0.3, ease: "power2.out" });
-      }
-    };
-
-    const onMouseLeave = () => {
-      gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.8, ease: "elastic.out(1, 0.4)" });
-    };
-
-    card.addEventListener("mousemove", onMouseMove);
-    card.addEventListener("mouseleave", onMouseLeave);
-    return () => {
-      card.removeEventListener("mousemove", onMouseMove);
-      card.removeEventListener("mouseleave", onMouseLeave);
-    };
-  }, { scope: cardRef });
-
-  const formattedIndex = (index + 1).toString().padStart(2, "0");
-
+export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
-    <div
-      ref={cardRef}
-      style={{ transformStyle: "preserve-3d" }}
-      className={`project-card group relative overflow-hidden rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-[#FF6B00]/40 transition-all duration-500 flex flex-col ${className}`}
-    >
-      {/* Hover glow */}
-      <div
-        ref={glowRef}
-        className="absolute w-[300px] h-[300px] rounded-full bg-[#FF6B00]/10 blur-[80px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"
-      />
-
-      {/* Inner border shimmer */}
-      <div className="absolute inset-[1px] rounded-2xl border border-white/[0.04] pointer-events-none z-10" />
-
-      <div className="relative z-20 p-7 flex flex-col h-full gap-6">
-        {/* Top row: index + category + action buttons */}
-        <div className="flex items-start justify-between">
-          <div className="flex flex-col gap-1">
-            <span className="font-bebas text-5xl leading-none text-white/[0.05] group-hover:text-[#FF6B00]/10 transition-colors duration-700 select-none">
-              {formattedIndex}
-            </span>
-            <div className="flex items-center gap-1.5">
-              <span className="w-1 h-1 bg-[#FF6B00] rounded-full animate-pulse" />
-              <span className="text-[9px] uppercase tracking-[0.4em] text-white/35 group-hover:text-[#FF6B00] transition-colors duration-500 font-semibold">
-                {project.category}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex gap-2">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white/50 hover:bg-[#FF6B00] hover:border-[#FF6B00] hover:text-white transition-all duration-300"
-              >
-                <ArrowUpRight size={15} />
-              </a>
-            )}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white/50 hover:bg-white hover:text-black transition-all duration-300"
-              >
-                <Code size={15} />
-              </a>
-            )}
-          </div>
+    <article className="project-card group overflow-hidden rounded-[1.7rem] border border-white/[.08] bg-[#0b1118]/75 transition duration-500 hover:-translate-y-1 hover:border-[#34d399]/30 hover:shadow-[0_30px_90px_rgba(0,0,0,.3)]">
+      <div className={`relative isolate flex h-52 items-end overflow-hidden bg-gradient-to-br ${atmospheres[index % atmospheres.length]} p-6 md:h-60 md:p-8`}>
+        <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-50 [background-image:linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)] [background-size:34px_34px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+        <div aria-hidden="true" className="absolute -right-8 -top-20 size-64 rounded-full border border-[#a7f3d0]/15 transition duration-700 group-hover:scale-110 group-hover:border-[#34d399]/35" />
+        <div aria-hidden="true" className="absolute -right-1 top-6 size-48 rounded-full border border-[#a7f3d0]/10 transition duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
+        <div aria-hidden="true" className="absolute right-16 top-16 size-20 rounded-full bg-[#34d399]/10 blur-2xl transition duration-700 group-hover:bg-[#34d399]/20" />
+        <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-white/10 bg-[#0a0f0d]/35 px-3 py-2 backdrop-blur-xl md:left-8 md:top-8">
+          <Sparkles size={13} className="text-[#34d399]" aria-hidden="true" />
+          <span className="text-[9px] font-bold uppercase tracking-[.16em] text-white/65">{project.category}</span>
         </div>
+        <span className="absolute right-6 top-7 font-mono text-[10px] text-white/35 md:right-8 md:top-9">/{String(index + 1).padStart(2, '0')}</span>
+        <p className="relative max-w-[80%] font-bebas text-4xl leading-[.9] tracking-[-.02em] text-white/90 md:text-5xl">{project.title}</p>
+        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-[#34d399]/70 via-white/10 to-transparent" />
+      </div>
 
-        {/* Title */}
-        <div className="flex-1">
-          <h3 className="font-bebas text-4xl md:text-5xl leading-[0.9] tracking-tight text-white/85 group-hover:text-white group-hover:translate-x-1 transition-all duration-500 mb-4">
-            {project.title}
-          </h3>
-
-          <p className="text-white/30 text-sm leading-relaxed group-hover:text-white/50 transition-colors duration-500 line-clamp-3">
-            {project.description}
-          </p>
+      <div className="p-6 md:p-8">
+        <p className="min-h-[4.5rem] text-sm leading-7 text-white/55">{project.description}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {project.techStack.map((tag) => <span key={tag} className="rounded-full border border-white/[.07] bg-white/[.025] px-3 py-1.5 text-[10px] text-white/45">{tag}</span>)}
         </div>
-
-        {/* Tech tags + explore link */}
-        <div className="border-t border-white/[0.06] pt-5 flex flex-col gap-4">
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tag, i) => (
-              <span
-                key={i}
-                className="text-[8px] uppercase tracking-[0.15em] px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/30 group-hover:text-white/55 group-hover:border-[#FF6B00]/20 group-hover:bg-[#FF6B00]/[0.05] transition-all duration-500"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3 w-fit">
-            <div className="h-px w-8 bg-white/10 group-hover:w-12 group-hover:bg-[#FF6B00] transition-all duration-600" />
-            <span className="text-[9px] uppercase tracking-[0.3em] text-white/20 group-hover:text-[#FF6B00] transition-colors duration-500">
-              Explore
-            </span>
-          </div>
+        <div className="mt-6 flex items-center gap-3 border-t border-white/[.07] pt-5">
+          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`Visit ${project.title}`} className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#34d399] px-4 text-[10px] font-extrabold uppercase tracking-[.12em] text-[#0a0f0d] transition hover:bg-white">Live project <ArrowUpRight size={14} aria-hidden="true" /></a>}
+          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer" aria-label={`${project.title} source code on GitHub`} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/10 px-4 text-[10px] font-bold uppercase tracking-[.12em] text-white/65 transition hover:border-[#34d399]/40 hover:text-[#34d399]"><Code2 size={14} aria-hidden="true" /> Source</a>}
+          {!project.liveUrl && !project.githubUrl && <span className="text-xs text-white/35">Selected project</span>}
         </div>
       </div>
-    </div>
+    </article>
   );
-};
-
-export default ProjectCard;
+}

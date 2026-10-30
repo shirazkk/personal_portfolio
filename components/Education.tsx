@@ -1,63 +1,30 @@
-'use client'
-import React, { useRef } from 'react';
-import { portfolioData } from '@/data/portfolio';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { portfolioData } from '@/data/portfolio';
 
-const Education = () => {
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from('.education-card', {
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top 85%',
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power3.out',
-    });
-  }, { scope: container });
-
+export default function Education() {
   return (
-    <section id="education" ref={container} className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="flex flex-col mb-16">
-        <h2 className="text-6xl md:text-8xl font-bebas mb-4">Academic Foundation</h2>
-        <div className="h-2 w-32 bg-[#FF6B00]" />
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {portfolioData.credentials.education.map((edu, index) => (
-          <div key={index} className="education-card p-10 bg-white/5 border-l-4 border-[#FF6B00] hover:bg-white/10 transition-[background-color] group">
-            <div className="flex items-start justify-between mb-4">
-              <p className="text-[#FF6B00] font-bebas text-2xl">{edu.year}</p>
-              {edu.logo && (
-                <Image
-                  src={edu.logo}
-                  alt={`${edu.institution} logo`}
-                  width={40}
-                  height={40}
-                  className="object-contain opacity-70"
-                  loading={index < 2 ? "eager" : "lazy"}
-                  sizes="40px"
-                />
-              )}
-            </div>
-            <h2 className="text-3xl font-bebas mb-2 group-hover:tracking-wider transition-all duration-300">
-              {edu.degree}
-            </h2>
-            <p className="text-xl text-white/50">{edu.institution}</p>
-          </div>
-        ))}
+    <section id="education" className="px-6 py-20 md:px-12 md:py-28">
+      <div className="mx-auto max-w-[1320px]">
+        <div className="mb-8 flex items-center gap-4">
+          <span className="eyebrow">04 / Learning</span><span className="h-px flex-1 bg-white/10" />
+        </div>
+        <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <h2 className="font-bebas text-5xl leading-none text-white md:text-6xl">Grounded in <span className="text-[#34d399]">learning.</span></h2>
+          <p className="text-xs text-white/40">A foundation that keeps evolving.</p>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {portfolioData.credentials.education.map((item, index) => (
+            <article key={item.institution} className="education-card flex items-start gap-4 rounded-2xl border border-white/[.08] bg-white/[.025] p-5 transition hover:border-[#34d399]/25">
+              {item.logo && <Image src={item.logo} alt={`${item.institution} logo`} width={38} height={38} className="mt-1 size-9 rounded-lg object-contain" loading={index < 2 ? 'eager' : 'lazy'} sizes="38px" />}
+              <div>
+                <p className="font-mono text-[10px] text-[#34d399]">{item.year}</p>
+                <h3 className="mt-2 text-sm font-bold leading-5 text-white/80">{item.degree}</h3>
+                <p className="mt-1 text-xs text-white/40">{item.institution}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Education;
+}

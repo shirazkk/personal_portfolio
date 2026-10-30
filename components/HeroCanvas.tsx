@@ -1,147 +1,151 @@
-'use client'
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+'use client';
 
-const HeroCanvas = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+import { useEffect, useRef } from 'react';
+
+type Particle = { x: number; y: number; vx: number; vy: number; radius: number };
+
+export default function HeroCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const container = containerRef.current;
+    const canvas = canvasRef.current;
+    const context = canvas?.getContext('2d');
+    if (!canvas || !context) return;
 
-    // Scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const particles: Particle[] = [];
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let running = false;
+    let covered = false;
+    let onScreen = true;
+    let pointerX = -1000;
+    let pointerY = -1000;
 
-    // Geometry
-    const geometry = new THREE.IcosahedronGeometry(1.15, 2);
-    const material = new THREE.MeshPhongMaterial({
-      color: 0xFF6B00,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.68,
-    });
+    const resize = () => {
+      const bounds = canvas.getBoundingClientRect();
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.25); // capped for mobile paint cost
+      width = bounds.width;
+      height = bounds.height;
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = window.innerWidth > 900 ? 1.4 : 0;
-    scene.add(mesh);
-
-    const ringGeometry = new THREE.TorusGeometry(1.65, 0.008, 12, 120);
-    const ringMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.18,
-    });
-    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-    ring.rotation.x = Math.PI / 2.6;
-    ring.position.copy(mesh.position);
-    scene.add(ring);
-
-    // Particles
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = window.innerWidth < 768 ? 700 : 1800;
-    const posArray = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 10;
-    }
-
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.006,
-      color: 0xFFFFFF,
-      transparent: true,
-      opacity: 0.7,
-    });
-
-    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particlesMesh);
-
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0xFF6B00, 2);
-    pointLight.position.set(2, 3, 4);
-    scene.add(pointLight);
-
-    const coolLight = new THREE.PointLight(0xffffff, 0.8);
-    coolLight.position.set(-4, -2, 2);
-    scene.add(coolLight);
-
-    camera.position.z = 3;
-
-    // Mouse movement
-    let mouseX = 0;
-    let mouseY = 0;
-
-    const handleMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX / window.innerWidth) - 0.5;
-      mouseY = (event.clientY / window.innerHeight) - 0.5;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Animation
-    let frameId = 0;
-    const targetPosition = { x: mesh.position.x, y: mesh.position.y };
-
-    const animate = () => {
-      frameId = requestAnimationFrame(animate);
-
-      if (!prefersReducedMotion) {
-        mesh.rotation.x += 0.001;
-        mesh.rotation.y += 0.002;
-        ring.rotation.z -= 0.0015;
-        particlesMesh.rotation.y = mouseX * 0.5;
-        particlesMesh.rotation.x = -mouseY * 0.5;
-        targetPosition.x = (window.innerWidth > 900 ? 1.4 : 0) + mouseX * 0.5;
-        targetPosition.y = -mouseY * 0.5;
-        mesh.position.x += (targetPosition.x - mesh.position.x) * 0.04;
-        mesh.position.y += (targetPosition.y - mesh.position.y) * 0.04;
-        ring.position.copy(mesh.position);
+      const count = Math.min(90, Math.max(32, Math.round((width * height) / 16000)));
+      particles.length = 0;
+      for (let index = 0; index < count; index += 1) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
+          radius: Math.random() * 1.3 + 0.7,
+        });
       }
 
-      renderer.render(scene, camera);
+      // Only paint a static frame when the loop is paused; a running loop
+      // redraws with the new particles on its next frame.
+      if (!running) render();
+      start();
     };
 
-    animate();
+    const render = () => {
+      frame = 0;
+      context.clearRect(0, 0, width, height);
 
-    // Resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      mesh.position.x = window.innerWidth > 900 ? 1.4 : 0;
-      ring.position.copy(mesh.position);
+      for (let i = 0; i < particles.length; i += 1) {
+        const particle = particles[i];
+        if (!reducedMotion) {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+          particle.x += (pointerX - particle.x) * 0.00012;
+          particle.y += (pointerY - particle.y) * 0.00012;
+          if (particle.x < -8) particle.x = width + 8;
+          if (particle.x > width + 8) particle.x = -8;
+          if (particle.y < -8) particle.y = height + 8;
+          if (particle.y > height + 8) particle.y = -8;
+        }
+
+        context.beginPath();
+        context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(50, 157, 110, 0.58)';
+        context.fill();
+
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const other = particles[j];
+          const dx = particle.x - other.x;
+          const dy = particle.y - other.y;
+          const distance = Math.hypot(dx, dy);
+          if (distance > 154) continue;
+          context.beginPath();
+          context.moveTo(particle.x, particle.y);
+          context.lineTo(other.x, other.y);
+          context.strokeStyle = `rgba(50, 157, 110, ${0.3 * (1 - distance / 154)})`;
+          context.lineWidth = 0.7;
+          context.stroke();
+        }
+      }
+
+      if (!reducedMotion && running) frame = window.requestAnimationFrame(render);
     };
 
-    window.addEventListener('resize', handleResize);
+    const start = () => {
+      if (reducedMotion || running || covered || !onScreen || document.hidden) return;
+      running = true;
+      frame = window.requestAnimationFrame(render);
+    };
+
+    const stop = () => {
+      running = false;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const onScroll = () => {
+      // The hero is pinned behind the About panel; stop painting once covered.
+      covered = window.scrollY > window.innerHeight * 0.9;
+      if (covered) stop();
+      else start();
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!running) return;
+      const bounds = canvas.getBoundingClientRect();
+      pointerX = event.clientX - bounds.left;
+      pointerY = event.clientY - bounds.top;
+    };
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) start();
+      else stop();
+    });
+    intersectionObserver.observe(canvas);
+
+    resize();
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
 
     return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-      geometry.dispose();
-      material.dispose();
-      ringGeometry.dispose();
-      ringMaterial.dispose();
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      stop();
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 -z-10 pointer-events-none" />;
-};
-
-export default HeroCanvas;
+  return <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 h-full w-full opacity-90" />;
+}

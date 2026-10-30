@@ -53,12 +53,8 @@ export const portfolioData = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
+    { label: "Work", href: "#projects" },
     { label: "Experience", href: "#experience" },
-    { label: "Blog", href: "#blog" },
-    { label: "Education", href: "#education" },
-    { label: "Credentials", href: "#credentials" },
     { label: "Contact", href: "#contact" },
   ],
   stats: [
@@ -67,7 +63,7 @@ export const portfolioData = {
     { value: "2+", label: "Years building" },
   ],
   about: {
-    bio: "I'm a Full Stack Web Developer and Agentic AI Developer based in Karachi. I build high-performance web applications using Next.js, React, TypeScript, and Sanity CMS. I also design intelligent AI systems powered by OpenAI Agent SDK, CrewAI, LangChain, and FastAPI. I work across the full spectrum of modern product development—from crafting pixel-perfect interfaces to architecting multi-agent AI pipelines. My goal is to build software that is both intelligent and highly performant.",
+    bio: "Based in Karachi, I build digital products where thoughtful interface design meets dependable engineering. My work spans full-stack web applications and agentic AI systems, from shaping product experiences to building APIs, data pipelines, and multi-agent workflows that are ready to ship.",
     focus: [
       "Building full-stack web applications with Next.js, React, TypeScript, and Sanity CMS",
       "Designing and deploying Agentic AI systems using OpenAI Agent SDK, CrewAI, and LangChain",
@@ -249,7 +245,7 @@ export const portfolioData = {
     {
       title: "Ustad.ai",
       description:
-        "Culturally-rooted, multi-agent AI tutoring platform for Pakistani students in Hinglish with board-specific syllabus.",
+        "A culturally rooted, multi-agent AI tutoring platform for Pakistani students, with Hinglish instruction and board-specific syllabi. Built with Next.js, React, and TypeScript, it uses Google Gemini and the Vercel AI SDK, with its service hosted on Cloud Run.",
       techStack: [
         "Next.js",
         "React",
@@ -268,7 +264,7 @@ export const portfolioData = {
     {
       title: "Physical AI Book - Hackathon",
       description:
-        "AI-powered book built with Docusaurus, Qdrant vector search, and Google Gen-AI. Developed using Spec-Driven Development.",
+        "An AI-powered Physical AI book built with Docusaurus and FastAPI. It combines Qdrant vector search with Google Generative AI for RAG-based answers, and was developed with Python, Claude Code, and Spec-Driven Development.",
       techStack: [
         "Docusaurus",
         "FastAPI",
@@ -390,98 +386,6 @@ export const portfolioData = {
     },
   ] satisfies BlogPost[],
   credentials: {
-    certifications: [
-      {
-        name: "Prompt Design in Vertex AI Skill Badge",
-        issuer: "Google",
-        date: "2026",
-        logo: "/google.png",
-      },
-      {
-        name: "Build a Website on Google Cloud Skill Badge",
-        issuer: "Google",
-        date: "2026",
-        logo: "/google.png",
-      },
-      {
-        name: "Claude Code in Action",
-        issuer: "Anthropic",
-        date: "2026",
-        logo: "/anthropic.png",
-      },
-      {
-        name: "OpenClaw Mastery for Everyone",
-        issuer: "LevelUp Labs",
-        date: "2026",
-        logo: "/leveluplabs.png",
-      },
-      {
-        name: "Claude Code 101",
-        issuer: "Anthropic",
-        date: "2026",
-        logo: "/anthropic.png",
-      },
-      {
-        name: "Agentic AI Professional Level 2 Developer",
-        issuer: "PIAIC",
-        date: "2026",
-        logo: "/piaic.jpeg",
-      },
-      {
-        name: "Agentic AI Level 1 Developer",
-        issuer: "PIAIC",
-        date: "2026",
-        logo: "/piaic.jpeg",
-      },
-      {
-        name: "Docker Fundamentals | Crash Course",
-        issuer: "Udemy",
-        date: "2025",
-        logo: "/udemy.png",
-      },
-      {
-        name: "Introduction to Model Context Protocol",
-        issuer: "Anthropic",
-        date: "2025",
-        logo: "/anthropic.png",
-      },
-      {
-        name: "Fundamental AI Concepts",
-        issuer: "UniAthena",
-        date: "2025",
-        logo: "/uniathena.jpeg",
-      },
-      {
-        name: "Basic of Python",
-        issuer: "UniAthena",
-        date: "2025",
-        logo: "/uniathena.jpeg",
-      },
-      {
-        name: "React Js",
-        issuer: "HackerRank",
-        date: "2024",
-        logo: "/hackerrank.jpeg",
-      },
-      {
-        name: "Introduction To TypeScript",
-        issuer: "Great Learning",
-        date: "2024",
-        logo: "/great_learning.jpeg",
-      },
-      {
-        name: "Fundamental AI Concept",
-        issuer: "Microsoft",
-        date: "2024",
-        logo: "/microsoft.jpeg",
-      },
-      {
-        name: "AI Python",
-        issuer: "DeepLearning.AI",
-        date: "2024",
-        logo: "/deeplearningai.jpeg",
-      },
-    ],
     education: [
       {
         degree: "Intermediate in Engineering",

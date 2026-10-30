@@ -6,12 +6,12 @@ import { portfolioData } from "@/data/portfolio";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
-  variable: "--font-bebas",
+  variable: "--font-bebas-local",
   subsets: ["latin"],
 });
 
 const manrope = Manrope({
-  variable: "--font-manrope",
+  variable: "--font-manrope-local",
   subsets: ["latin"],
 });
 
@@ -90,10 +90,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-[#0a0a0a] text-white font-manrope selection:bg-[#FF6B00] selection:text-white">
+      <body className="bg-[#0a0f0d] text-white font-manrope">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#FF6B00] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#34d399] focus:text-[#0a0f0d] focus:px-4 focus:py-2 focus:rounded-lg"
         >
           Skip to main content
         </a>

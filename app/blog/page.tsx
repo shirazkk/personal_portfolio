@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, BookOpen } from "lucide-react";
 import { Metadata } from "next";
+import Reveal from "@/components/Reveal";
 
 
 import { client } from "@/sanity/lib/client";
@@ -47,7 +48,7 @@ export default async function BlogPage() {
             Home
           </Link>
 
-          <div className="mt-20 max-w-4xl">
+          <Reveal className="mt-20 max-w-4xl" y={20}>
             <p className="text-[#FF6B00] uppercase tracking-[0.35em] text-xs font-bold mb-5">
               Thinking in public
             </p>
@@ -58,14 +59,15 @@ export default async function BlogPage() {
               Notes on shipping agentic AI systems, full-stack product
               workflows, and high-conversion web experiences.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <Reveal className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6" stagger={0.08} y={20}>
             {posts.length > 0 ? (
               posts.map((post: BlogPost, index: number) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
+                  data-reveal-item
                   className="group min-h-[360px] border border-white/10 bg-white/[0.04] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#FF6B00]/70 hover:bg-white/[0.07]"
                 >
                   <div className="mb-12 flex items-center justify-between">
@@ -94,7 +96,7 @@ export default async function BlogPage() {
                 <p className="text-white/40 text-lg">No posts yet. The AI agent publishes every Monday!</p>
               </div>
             )}
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

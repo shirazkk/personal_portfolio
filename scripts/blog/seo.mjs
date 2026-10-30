@@ -1,7 +1,7 @@
 import { callGeminiJSON } from './utils.mjs';
 import googleTrends from 'google-trends-api';
 import { withRetry } from './utils.mjs';
-import { searchSerperOrganic } from './research.mjs'; // Need to export this from research.mjs
+import { searchSerperOrganic } from './research.mjs';
 
 export async function generateTopicCandidate(research, label, recentPostTitles = [], feedback = null) {
   const feedbackBlock = feedback
@@ -9,7 +9,7 @@ export async function generateTopicCandidate(research, label, recentPostTitles =
     : '';
 
   const historyBlock = recentPostTitles.length > 0
-    ? `\n\nALREADY PUBLISHED TITLES (AVOID REPEATING THESE OR THEIR SPECIFIC NICHES):\n${recentPostTitles.map(t => `- ${t}`).join('\n')}\n`
+    ? `\n\nALREADY PUBLISHED POSTS (AVOID REPEATING THESE TOPICS OR SIMILAR THEMES):\n${recentPostTitles.map(p => `- TITLE: "${p.title}"\n  SLUG: "${p.slug}"\n  EXCERPT: "${p.excerpt}"`).join('\n\n')}\n`
     : '';
 
   const prompt = `
@@ -19,19 +19,25 @@ Today's date context: ${label}
 ${historyBlock}
 
 Based on the following real, dated research data, your job is to:
-1. Identify ONE blog topic that is tied to a SPECIFIC named tool, model, framework, version number, or event mentioned in the research below — NOT a generic evergreen topic.
-2. Diversify the content niche. If the recent titles are heavily focused on one area (like AI agents), switch to another area of expertise like Next.js performance, TypeScript features, CSS/UI trends, or Backend architecture.
-3. Extract 5-8 SEO keywords specifically for that topic. Keywords must be specific long-tail phrases people actually search.
-4. Provide "sourceEvidence": a short quote or reference (1-2 sentences) from the research that justifies why this topic is tied to something NEW and RECENT.
+1. Identify ONE blog topic that is tied to a SPECIFIC named tool, model, framework, version number, or event ACTUALLY MENTIONED in the research below — NOT a generic evergreen topic.
+2. CRITICAL: Choose a topic that has SUBSTANTIVE research backing (multiple mentions, technical details, implementation guidance). Avoid topics only mentioned in passing or marketing fluff.
+3. CRITICAL: The sourceEvidence MUST be a direct quote from the research that EXACTLY supports the topic title. If the research mentions "Genkit beta" but not "Genkit Agents API", you CANNOT write about "Genkit Agents API".
+4. Diversify the content niche. If the recent titles are heavily focused on one area (like AI agents), switch to another area of expertise like Next.js performance, TypeScript features, CSS/UI trends, or Backend architecture.
+5. CRITICAL: Ensure the topic is NOT similar to any already published posts above. Check both titles and excerpts for similarity.
+6. Extract 5-8 SEO keywords specifically for that topic. Keywords must be specific long-tail phrases people actually search.
+7. Provide "sourceEvidence": a VERBATIM quote from the research that contains the EXACT tool/API/feature name mentioned in your topic.
 
 Research Data:
 ${research}
 
 STRICT RULES:
-- The topic title MUST explicitly name a specific tool, product, model, framework, or release version found in the research (e.g. "Claude Opus 4.6", "Next.js 15.4", "LangGraph v0.3", a named startup/product).
+- The topic title MUST use ONLY the EXACT names/versions mentioned in the research. If research says "ASUS Zenni Claw", write "ASUS Zenni Claw" NOT "ASUS Zenni Claw Beta" unless "beta" is explicitly in the research.
+- NEVER add qualifiers like "beta", "alpha", "v2", "pro", etc. unless they appear in the research text.
+- NEVER invent API names, feature names, or product variants that don't appear in the research text.
 - REJECT any topic that could have been written without today's research (e.g. "The Future of Agentic AI", "Why AI Agents Matter in 2026" — these are too generic).
 - The topic must still be relevant to: Next.js, TypeScript, Agentic AI, AI Automation, Full Stack Development — but the HOOK must be the specific new thing, with the dev-stack angle as the application/tie-in.
 - Keywords must be specific long-tail phrases (e.g. "how to use Claude Opus 4.6 with LangGraph" not just "AI agents").
+- If the topic is too similar to any published post above, choose a different angle or tool from the research.
 ${feedbackBlock}
 
 Return ONLY a raw JSON object like this (no markdown, no explanation):
@@ -45,19 +51,28 @@ Return ONLY a raw JSON object like this (no markdown, no explanation):
   return callGeminiJSON(prompt, { retries: 3, baseDelayMs: 1500, label: 'Topic candidate generation' });
 }
 
-export async function checkTopicSpecificity(candidate) {
+export async function checkTopicSpecificity(candidate, research) {
   const prompt = `
-You are reviewing a proposed blog topic for genericness.
+You are reviewing a proposed blog topic for genericness AND research support.
 
 Proposed topic: "${candidate.topic}"
 Source evidence provided: "${candidate.sourceEvidence}"
 
-QUESTION: Could this exact topic title have been written WITHOUT the source evidence above — i.e. is it a generic, evergreen-sounding title that doesn't actually require knowledge of a specific recent release, tool, or event?
+FULL RESEARCH DATA:
+${research.slice(0, 3000)}
+
+QUESTION 1: Could this exact topic title have been written WITHOUT the source evidence above — i.e. is it a generic, evergreen-sounding title that doesn't actually require knowledge of a specific recent release, tool, or event?
+
+QUESTION 2: Does the source evidence ACTUALLY support the specific tool/API/feature mentioned in the topic? Or is the topic claiming something that doesn't exist in the evidence?
+
+QUESTION 3: Does the FULL research data contain SUBSTANTIVE information about this topic (multiple mentions, technical details, implementation guidance)? Or is it only mentioned in passing (one sentence, marketing fluff)?
 
 Answer with ONLY a raw JSON object (no markdown, no explanation):
 {
   "isGeneric": true | false,
-  "reason": "one sentence explanation"
+  "isResearchSupported": true | false,
+  "hasSubstantiveResearch": true | false,
+  "reason": "one sentence explanation for all three checks"
 }
 `;
 
@@ -68,7 +83,7 @@ export async function selectTopicAndKeywords(research, recentPostTitles = []) {
   console.log('🎯 Selecting specific, news-tied topic and SEO keywords...');
   const { getCurrentMonthYear } = await import('./utils.mjs');
   const { label } = getCurrentMonthYear();
-  const maxRetries = 2;
+  const maxRetries = 5;
   let candidate = null;
   let feedback = null;
 
@@ -76,15 +91,20 @@ export async function selectTopicAndKeywords(research, recentPostTitles = []) {
     candidate = await generateTopicCandidate(research, label, recentPostTitles, feedback);
     console.log(`  Attempt ${attempt + 1}: "${candidate.topic}"`);
 
-    const check = await checkTopicSpecificity(candidate);
+    const check = await checkTopicSpecificity(candidate, research);
 
-    if (!check.isGeneric) {
+    if (!check.isGeneric && check.isResearchSupported && check.hasSubstantiveResearch) {
       candidate.specificityCheckPassed = true;
       console.log('  ✅ Specificity check passed.');
       return candidate;
     }
 
-    console.log(`  ⚠️ Rejected as generic: ${check.reason}`);
+    const rejectionReasons = [];
+    if (check.isGeneric) rejectionReasons.push('generic');
+    if (!check.isResearchSupported) rejectionReasons.push('not supported by research');
+    if (!check.hasSubstantiveResearch) rejectionReasons.push('insufficient research depth');
+
+    console.log(`  ⚠️ Rejected as ${rejectionReasons.join(', ')}: ${check.reason}`);
     feedback = check.reason;
   }
 
@@ -193,7 +213,6 @@ export async function validateAndRefineKeywords(topic, keywords) {
 
   let relatedCandidates = [];
   try {
-    // Use the first 1-2 primary keywords for related-search lookups
     const primary = keywords.slice(0, 2);
     const relatedResults = await Promise.all(primary.map(getRelatedSearches));
     relatedCandidates = [...new Set(relatedResults.flat())].slice(0, 10);
